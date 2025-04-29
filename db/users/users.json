@@ -3,6 +3,6 @@
         "id":"1",
         "nombre":"admin",
         "contraseña":"admin",
-        "permisos":["admin"]
+        "clase":"admin"
     }
 ]
