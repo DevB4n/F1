@@ -27,7 +27,7 @@ class DriverCard extends HTMLElement {
   }
 
   .card:hover {
-    transform: scale(1.05);
+    transform: scale(1.10);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4); /* Sombra más intensa al hacer hover */
   }
 
@@ -60,7 +60,7 @@ class DriverCard extends HTMLElement {
   }
 
   .card:active {
-    transform: scale(1.02); /* Efecto de presionar */
+    transform: scale(1.5); /* Efecto de presionar */
   }
 
   /* Estilos para hacer que la tarjeta se vea más deportiva */
