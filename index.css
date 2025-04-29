@@ -168,6 +168,7 @@ button {
     pointer-events:none;
     transform: scale(0.95);
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    z-index: 20;
   }
 
 #register-information{
@@ -196,6 +197,37 @@ button {
     height: 40px;
     width: 70px;
 }
+
+body.blur-active::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+}
+
+#register-pop-up {
+  position: fixed;
+  width: 600px;
+  height: 290px;
+  background-color: white;
+  padding: 0;
+  margin-left: 35%;
+  line-height: 40px;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.95);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  z-index: 20;
+}
+
 
 /* Media queries para responsividad */
 @media (max-width: 768px) {
