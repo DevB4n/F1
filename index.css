@@ -1,17 +1,7 @@
-/* Importación de variables */
+
 @import url(css/variables.css);
 
-body{
-    display: flex;
-    flex-direction: column;
-    place-content: center;
-}
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing: border-box;}
-/* Estilos globales */
 * {
   margin: 0;
   padding: 0;
@@ -19,11 +9,14 @@ body{
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  place-content: center;
   font-family: 'Poppins-Regular', sans-serif;
   line-height: 1.6;
 }
 
-/* Navegación */
+
 nav {
   width: 100%;
   height: 80px;
@@ -74,7 +67,7 @@ ul li a:hover::after {
   width: 100%;
 }
 
-/* Logo */
+
 #f1-menu-image {
   display: flex;
   align-items: center;
@@ -86,7 +79,6 @@ ul li a:hover::after {
   max-height: 50px;
 }
 
-/* Área de cuenta */
 #account {
   display: flex;
   align-items: center;
@@ -94,21 +86,25 @@ ul li a:hover::after {
   margin-left: 40px;
 }
 
-/* Botones */
+
 button {
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
-#sign-in-btn {
+#sign-in-btn,
+#log-in-btn {
   height: 36px;
   width: 90px;
   font-family: 'Poppins-Regular', sans-serif;
   font-size: 14px;
-  background-color: #000000;
-  color: white;
   border: none;
   border-radius: 4px;
+}
+
+#sign-in-btn {
+  background-color: #000000;
+  color: white;
 }
 
 #sign-in-btn:hover {
@@ -118,14 +114,8 @@ button {
 }
 
 #log-in-btn {
-  height: 36px;
-  width: 90px;
-  font-family: 'Poppins-Regular', sans-serif;
-  font-size: 14px;
   background-color: white;
-  color: var(--color-1);
-  border: none;
-  border-radius: 4px;
+  color: var(--color-2);
 }
 
 #log-in-btn:hover {
@@ -156,95 +146,65 @@ button {
 @media (max-width: 768px) {
   nav {
     flex-direction: column;
-    height: auto;
-    display:flex;
-    height:70px;
-    background-color: var(--color-1);
+    height: 70px;
     place-content: center;
     font-family: 'Poppins-Medium';
     font-size: 16px;
-    color:white
-}
-ul{
-    display: flex;
-    flex-direction:row ;
-    gap:20px;
-    list-style-type: none;
-    padding-top: 20px;
-}
-#f1-menu-image{
-    width:auto;
-    height:auto;
-    display: flex;
-    place-content: center;
-    margin-left:-10%;
-}
-#account{
-    padding-top:18px ;
-    display: flex;
-    flex-direction: row;
-    place-content: center;
-    margin-left:40px;
-    gap:20px;
-}
-#sign-in-btn{
-    height:30px;
-    width:70px;
-    font-family: 'Poppins-Regular';
-    font-size: 14px;
-    background-color: #000000;
-    color:white;
-    border:none;
-    border-radius: 3px;
-
-}
-#log-in-btn{
-    height:30px;
-    width: 70px;
-    font-family: 'Poppins-Regular';
-    font-size: 14px;
-    border:none;
-    border-radius: 3px;
-}
-
-#video-banner{
-    width:1200px;
-    height:400px;
-}
-
-#banner{
-    display: flex;
-    place-content: center;
-    margin-top:10px;
-}
-
-#header{
-    background-color: var(--color-4);
-    height:60px;
-    width: 100%;
-
-}
-
-#pop-up{
-    position: absolute;
-    width: 600px;
-    height:auto;
-    margin-left:35%;
-    background-color: white;
-
-    padding: 15px 0;
+    color: white;
   }
-  
+
   ul {
-    padding: 15px 0;
+    flex-direction: row;
+    gap: 20px;
+    padding-top: 20px;
   }
-  
-  #account {
-    margin: 15px 0;
-  }
-  
+
   #f1-menu-image {
+    width: auto;
+    height: auto;
+    place-content: center;
+    margin-left: -10%;
     margin: 10px 0;
     padding-left: 0;
+  }
+
+  #account {
+    padding-top: 18px;
+    flex-direction: row;
+    place-content: center;
+    margin-left: 40px;
+    gap: 20px;
+    margin: 15px 0;
+  }
+
+  #sign-in-btn,
+  #log-in-btn {
+    height: 30px;
+    width: 70px;
+    border-radius: 3px;
+  }
+
+  #video-banner {
+    width: 1200px;
+    height: 400px;
+  }
+
+  #banner {
+    place-content: center;
+    margin-top: 10px;
+  }
+
+  #header {
+    background-color: var(--color-4);
+    height: 60px;
+    width: 100%;
+  }
+
+  #pop-up {
+    position: absolute;
+    width: 600px;
+    background-color: white;
+    padding: 15px 0;
+    margin-left: 35%;
   }
 }
