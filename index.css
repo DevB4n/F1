@@ -1,0 +1,70 @@
+@import url(css/variables.css);
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+nav{
+    width:100%;
+    height: auto;
+    display:flex;
+    height:70px;
+    background-color: var(--color-1);
+    place-content: center;
+    font-family: 'Poppins-Medium';
+    font-size: 16px;
+    color:white
+}
+ul{
+    display: flex;
+    flex-direction:row ;
+    gap:20px;
+    list-style-type: none;
+    padding-top: 20px;
+}
+#f1-menu-image{
+    width:auto;
+    height:auto;
+    display: flex;
+    place-content: center;
+    margin-left:-10%;
+}
+#account{
+    padding-top:18px ;
+    display: flex;
+    flex-direction: row;
+    place-content: center;
+    margin-left:40px;
+    gap:20px;
+}
+#sign-in-btn{
+    height:30px;
+    width:70px;
+    font-family: 'Poppins-Regular';
+    font-size: 14px;
+    background-color: #000000;
+    color:white;
+    border:none;
+    border-radius: 3px;
+
+}
+#log-in-btn{
+    height:30px;
+    width: 70px;
+    font-family: 'Poppins-Regular';
+    font-size: 14px;
+    border:none;
+    border-radius: 3px;
+}
+
+#video-banner{
+    width:1200px;
+    height:400px;
+}
+
+#banner{
+    display: flex;
+    place-content: center;
+    margin-top:10px;
+}
