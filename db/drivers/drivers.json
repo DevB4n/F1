@@ -1,7 +1,24 @@
 [
-    { "id": 1, "nombre": "Max Verstappen", "equipo": "Red Bull Racing", "rol": "Líder" },
-    { "id": 2, "nombre": "Sergio Pérez", "equipo": "Red Bull Racing", "rol": "Escudero" },
-    { "id": 3, "nombre": "Lewis Hamilton", "equipo": "Mercedes-AMG Petronas", "rol": "Líder" },
+    {
+        "id": 1,
+        "nombre": "Max Verstappen",
+        "equipo": "Red Bull Racing",
+        "rol": "Líder",
+        "imagen": "https://image-service.zaonce.net/eyJidWNrZXQiOiJmcm9udGllci1jbXMiLCJrZXkiOiJmMW1hbmFnZXIvMjAyMy9kcml2ZXJzL2hlYWRzaG90cy9mMS92ZXIucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo1MDB9fX0="
+      },
+      
+    { "id": 2,
+     "nombre": "Sergio Pérez",
+      "equipo": "Red Bull Racing",
+       "rol": "Escudero",
+       "imagen": "https://image-service.zaonce.net/eyJidWNrZXQiOiJmcm9udGllci1jbXMiLCJrZXkiOiJmMW1hbmFnZXIvMjAyMy9kcml2ZXJzL2hlYWRzaG90cy9mMS9wZXIucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo1MDB9fX0="
+    },
+    { "id": 3,
+     "nombre": "Lewis Hamilton",
+      "equipo": "Mercedes-AMG Petronas",
+       "rol": "Líder",
+       "imagen": "https://a.espncdn.com/combiner/i?img=/i/headshots/rpm/players/full/868.png&w=350&h=254"
+    },
     { "id": 4, "nombre": "George Russell", "equipo": "Mercedes-AMG Petronas", "rol": "Escudero" },
     { "id": 5, "nombre": "Charles Leclerc", "equipo": "Ferrari", "rol": "Líder" },
     { "id": 6, "nombre": "Carlos Sainz", "equipo": "Ferrari", "rol": "Escudero" },
