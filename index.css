@@ -1,5 +1,11 @@
 @import url(css/variables.css);
 
+body{
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+}
+
 *{
     margin:0;
     padding:0;
@@ -67,4 +73,20 @@ ul{
     display: flex;
     place-content: center;
     margin-top:10px;
+}
+
+#header{
+    background-color: var(--color-4);
+    height:60px;
+    width: 100%;
+
+}
+
+#pop-up{
+    position: absolute;
+    width: 600px;
+    height:auto;
+    margin-left:35%;
+    background-color: white;
+
 }
