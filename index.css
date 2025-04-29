@@ -142,6 +142,61 @@ button {
   object-fit: cover;
 }
 
+#header {
+    display: flex;
+    background-color: #38383f;
+    height: 60px;
+    width: 100%;
+    place-content: center ;
+  }
+
+#header img{
+    width:100px;
+    height: 80px;
+    margin-top:-10px;
+}
+
+#pop-up {
+    position:fixed;
+    width: 600px;
+    height: 290px;
+    background-color:white;
+    padding: 0;
+    margin-left: 35%;
+    line-height: 40px;
+    opacity:0;
+    pointer-events:none;
+    transform: scale(0.95);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+
+#register-information{
+    display: flex;
+    flex-direction:column;
+    place-items: center;
+    font-family: 'Poppins-Light';
+    font-size:18px;
+}
+
+#usuario-registro{
+    width:auto;
+    height:30px;
+    border-radius:4px;
+}
+
+#usuario-password{
+    width:auto;
+    height:30px;
+    border-radius:4px;
+}
+
+#login-button{
+    margin-top:10px;
+    background:transparent;
+    height: 40px;
+    width: 70px;
+}
+
 /* Media queries para responsividad */
 @media (max-width: 768px) {
   nav {
@@ -194,17 +249,4 @@ button {
     margin-top: 10px;
   }
 
-  #header {
-    background-color: var(--color-4);
-    height: 60px;
-    width: 100%;
-  }
-
-  #pop-up {
-    position: absolute;
-    width: 600px;
-    background-color: white;
-    padding: 15px 0;
-    margin-left: 35%;
-  }
 }
