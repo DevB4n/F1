@@ -1,39 +1,262 @@
 [
     {
-        "id": 1,
-        "nombre": "Max Verstappen",
-        "equipo": "Red Bull Racing",
-        "rol": "Líder",
-        "imagen": "https://image-service.zaonce.net/eyJidWNrZXQiOiJmcm9udGllci1jbXMiLCJrZXkiOiJmMW1hbmFnZXIvMjAyMy9kcml2ZXJzL2hlYWRzaG90cy9mMS92ZXIucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo1MDB9fX0="
-      },
-      
-    { "id": 2,
-     "nombre": "Sergio Pérez",
+      "id": 1,
+      "nombre": "Max Verstappen",
       "equipo": "Red Bull Racing",
-       "rol": "Escudero",
-       "imagen": "https://image-service.zaonce.net/eyJidWNrZXQiOiJmcm9udGllci1jbXMiLCJrZXkiOiJmMW1hbmFnZXIvMjAyMy9kcml2ZXJzL2hlYWRzaG90cy9mMS9wZXIucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo1MDB9fX0="
+      "rol": "Líder",
+      "imagen": "https://image-service.zaonce.net/eyJidWNrZXQiOiJmcm9udGllci1jbXMiLCJrZXkiOiJmMW1hbmFnZXIvMjAyMy9kcml2ZXJzL2hlYWRzaG90cy9mMS92ZXIucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo1MDB9fX0=",
+      "caracteristicas": {
+        "frenado": 95,
+        "paso_por_curvas": 98,
+        "reaccion": 97,
+        "control": 99
+      }
     },
-    { "id": 3,
-     "nombre": "Lewis Hamilton",
+    {
+      "id": 2,
+      "nombre": "Sergio Pérez",
+      "equipo": "Red Bull Racing",
+      "rol": "Escudero",
+      "imagen": "https://image-service.zaonce.net/eyJidWNrZXQiOiJmcm9udGllci1jbXMiLCJrZXkiOiJmMW1hbmFnZXIvMjAyMy9kcml2ZXJzL2hlYWRzaG90cy9mMS9wZXIucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo1MDB9fX0=",
+      "caracteristicas": {
+        "frenado": 90,
+        "paso_por_curvas": 92,
+        "reaccion": 91,
+        "control": 93
+      }
+    },
+    {
+      "id": 3,
+      "nombre": "Lewis Hamilton",
       "equipo": "Mercedes-AMG Petronas",
-       "rol": "Líder",
-       "imagen": "https://a.espncdn.com/combiner/i?img=/i/headshots/rpm/players/full/868.png&w=350&h=254"
+      "rol": "Líder",
+      "imagen": "https://a.espncdn.com/combiner/i?img=/i/headshots/rpm/players/full/868.png&w=350&h=254",
+      "caracteristicas": {
+        "frenado": 96,
+        "paso_por_curvas": 97,
+        "reaccion": 96,
+        "control": 98
+      }
     },
-    { "id": 4, "nombre": "George Russell", "equipo": "Mercedes-AMG Petronas", "rol": "Escudero" },
-    { "id": 5, "nombre": "Charles Leclerc", "equipo": "Ferrari", "rol": "Líder" },
-    { "id": 6, "nombre": "Carlos Sainz", "equipo": "Ferrari", "rol": "Escudero" },
-    { "id": 7, "nombre": "Lando Norris", "equipo": "McLaren", "rol": "Líder" },
-    { "id": 8, "nombre": "Oscar Piastri", "equipo": "McLaren", "rol": "Escudero" },
-    { "id": 9, "nombre": "Fernando Alonso", "equipo": "Aston Martin", "rol": "Líder" },
-    { "id": 10, "nombre": "Lance Stroll", "equipo": "Aston Martin", "rol": "Escudero" },
-    { "id": 11, "nombre": "Esteban Ocon", "equipo": "Alpine", "rol": "Líder" },
-    { "id": 12, "nombre": "Pierre Gasly", "equipo": "Alpine", "rol": "Escudero" },
-    { "id": 13, "nombre": "Valtteri Bottas", "equipo": "Alfa Romeo", "rol": "Líder" },
-    { "id": 14, "nombre": "Zhou Guanyu", "equipo": "Alfa Romeo", "rol": "Escudero" },
-    { "id": 15, "nombre": "Kevin Magnussen", "equipo": "Haas", "rol": "Líder" },
-    { "id": 16, "nombre": "Nico Hülkenberg", "equipo": "Haas", "rol": "Escudero" },
-    { "id": 17, "nombre": "Yuki Tsunoda", "equipo": "AlphaTauri", "rol": "Líder" },
-    { "id": 18, "nombre": "Daniel Ricciardo", "equipo": "AlphaTauri", "rol": "Escudero" },
-    { "id": 19, "nombre": "Alexander Albon", "equipo": "Williams", "rol": "Líder" },
-    { "id": 20, "nombre": "Logan Sargeant", "equipo": "Williams", "rol": "Escudero" }
+    {
+      "id": 4,
+      "nombre": "George Russell",
+      "equipo": "Mercedes-AMG Petronas",
+      "rol": "Escudero",
+      "imagen": "https://images.ctfassets.net/1fvlg6xqnm65/66fJ1wrYcN0LBtsmPQjcTC/0ffbd03a4a5e0cc5396746216c1d154f/George_Russell.png?w=1920&q=75&fm=webp",
+      "caracteristicas": {
+        "frenado": 92,
+        "paso_por_curvas": 93,
+        "reaccion": 94,
+        "control": 92
+      }
+    },
+    {
+      "id": 5,
+      "nombre": "Charles Leclerc",
+      "equipo": "Ferrari",
+      "rol": "Líder",
+      "imagen": "https://soymotor.com/sites/default/files/2025-03/cleclerc_2025.png",
+      "caracteristicas": {
+        "frenado": 94,
+        "paso_por_curvas": 95,
+        "reaccion": 93,
+        "control": 94
+      }
+    },
+    {
+      "id": 6,
+      "nombre": "Carlos Sainz",
+      "equipo": "Ferrari",
+      "rol": "Escudero",
+      "imagen": "https://soymotor.com/sites/default/files/2025-03/csainz_2025.png",
+      "caracteristicas": {
+        "frenado": 91,
+        "paso_por_curvas": 92,
+        "reaccion": 90,
+        "control": 91
+      }
+    },
+    {
+      "id": 7,
+      "nombre": "Lando Norris",
+      "equipo": "McLaren",
+      "rol": "Líder",
+      "imagen": "https://a.espncdn.com/combiner/i?img=/i/headshots/rpm/players/full/5579.png&w=350&h=254",
+      "caracteristicas": {
+        "frenado": 93,
+        "paso_por_curvas": 94,
+        "reaccion": 92,
+        "control": 93
+      }
+    },
+    {
+      "id": 8,
+      "nombre": "Oscar Piastri",
+      "equipo": "McLaren",
+      "rol": "Escudero",
+      "imagen": "https://soymotor.com/sites/default/files/2025-03/opiastri_2025.png",
+      "caracteristicas": {
+        "frenado": 89,
+        "paso_por_curvas": 90,
+        "reaccion": 88,
+        "control": 89
+      }
+    },
+    {
+      "id": 9,
+      "nombre": "Fernando Alonso",
+      "equipo": "Aston Martin",
+      "rol": "Líder",
+      "imagen": "https://soymotor.com/sites/default/files/2025-03/falonso_2025.png",
+      "caracteristicas": {
+        "frenado": 95,
+        "paso_por_curvas": 96,
+        "reaccion": 94,
+        "control": 95
+      }
+    },
+    {
+      "id": 10,
+      "nombre": "Lance Stroll",
+      "equipo": "Aston Martin",
+      "rol": "Escudero",
+      "imagen": "https://cdn.racingnews365.com/Riders/Stroll/_570x570_crop_center-center_none/f1_2024_ls_ast_lg.png?v=1708704434",
+      "caracteristicas": {
+        "frenado": 88,
+        "paso_por_curvas": 89,
+        "reaccion": 87,
+        "control": 88
+      }
+    },
+    {
+      "id": 11,
+      "nombre": "Esteban Ocon",
+      "equipo": "Alpine",
+      "rol": "Líder",
+      "imagen": "https://soymotor.com/sites/default/files/2025-03/eocon_2025.png",
+      "caracteristicas": {
+        "frenado": 91,
+        "paso_por_curvas": 92,
+        "reaccion": 90,
+        "control": 91
+      }
+    },
+    {
+      "id": 12,
+      "nombre": "Pierre Gasly",
+      "equipo": "Alpine",
+      "rol": "Escudero",
+      "imagen": "https://soymotor.com/sites/default/files/2025-03/pgasly_2025.png",
+      "caracteristicas": {
+        "frenado": 89,
+        "paso_por_curvas": 90,
+        "reaccion": 88,
+        "control": 89
+      }
+    },
+    {
+      "id": 13,
+      "nombre": "Valtteri Bottas",
+      "equipo": "Alfa Romeo",
+      "rol": "Líder",
+      "imagen": "https://soymotor.com/sites/default/files/2024-02/valtteri-bottas-2024.png",
+      "caracteristicas": {
+        "frenado": 90,
+        "paso_por_curvas": 91,
+        "reaccion": 89,
+        "control": 90
+      }
+    },
+    {
+      "id": 14,
+      "nombre": "Zhou Guanyu",
+      "equipo": "Alfa Romeo",
+      "rol": "Escudero",
+      "imagen": "https://soymotor.com/sites/default/files/2024-02/guanyu-zhou-2024.png",
+      "caracteristicas": {
+        "frenado": 87,
+        "paso_por_curvas": 88,
+        "reaccion": 86,
+        "control": 87
+      }
+    },
+    {
+      "id": 15,
+      "nombre": "Kevin Magnussen",
+      "equipo": "Haas",
+      "rol": "Líder",
+      "imagen": "https://soymotor.com/sites/default/files/2024-02/kevin-magnussen-2024.png",
+      "caracteristicas": {
+        "frenado": 89,
+        "paso_por_curvas": 90,
+        "reaccion": 88,
+        "control": 89
+      }
+    },
+    {
+      "id": 16,
+      "nombre": "Nico Hülkenberg",
+      "equipo": "Haas",
+      "rol": "Escudero",
+      "imagen": "https://soymotor.com/sites/default/files/2025-03/nhulkenberg_2025.png",
+      "caracteristicas": {
+        "frenado": 88,
+        "paso_por_curvas": 89,
+        "reaccion": 87,
+        "control": 88
+      }
+    },
+    {
+      "id": 17,
+      "nombre": "Yuki Tsunoda",
+      "equipo": "AlphaTauri",
+      "rol": "Líder",
+      "imagen": "https://soymotor.com/sites/default/files/2025-03/yuki-tsunoda-red-bull-2025.png",
+      "caracteristicas": {
+        "frenado": 90,
+        "paso_por_curvas": 91,
+        "reaccion": 89,
+        "control": 90
+      }
+    },
+    {
+      "id": 18,
+      "nombre": "Daniel Ricciardo",
+      "equipo": "AlphaTauri",
+      "rol": "Escudero",
+      "imagen": "https://soymotor.com/sites/default/files/2024-02/daniel-ricciardo-2024.png",
+      "caracteristicas": {
+        "frenado": 89,
+        "paso_por_curvas": 90,
+        "reaccion": 88,
+        "control": 89
+      }
+    },
+    {
+      "id": 19,
+      "nombre": "Alexander Albon",
+      "equipo": "Williams",
+      "rol": "Líder",
+      "imagen": "https://soymotor.com/sites/default/files/2025-03/aalbon_2025.png",
+      "caracteristicas": {
+        "frenado": 91,
+        "paso_por_curvas": 92,
+        "reaccion": 90,
+        "control": 91
+      }
+    },
+    {
+      "id": 20,
+      "nombre": "Logan Sargeant",
+      "equipo": "Williams",
+      "rol": "Escudero",
+      "imagen": "https://soymotor.com/sites/default/files/2024-02/logan-sargeant-2024.png",
+      "caracteristicas": {
+        "frenado": 87,
+        "paso_por_curvas": 88,
+        "reaccion": 86,
+        "control": 87
+      }
+    }
 ]

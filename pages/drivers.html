@@ -1,25 +1,22 @@
-<!-- head -->
-<link rel="stylesheet" href="../css/drivers.css">
-<script type="module" src="../components/drivers/driversCards.js"></script>
-<script type="module" src="../components/drivers/driverDetail.js"></script>
-
-<!-- body -->
-<main id="contenedor-pilotos"></main>
-<driver-detail></driver-detail>
-
-<script>
-  // Supongamos que cargamos desde drivers.json
-  fetch('../db/drivers/drivers.json')
-    .then(res => res.json())
-    .then(data => {
-      const contenedor = document.getElementById('contenedor-pilotos');
-      data.forEach(piloto => {
-        const card = document.createElement('driver-card');
-        card.dataset.name = piloto.nombre;
-        card.dataset.image = piloto.imagen;
-        card.dataset.team = piloto.equipo;
-        card.dataset.bio = piloto.descripcion;
-        contenedor.appendChild(card);
-      });
-    });
-</script>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pilotos F1</title>
+  <link rel="stylesheet" href="../css/drivers.css">
+</head>
+<body>
+  <header>
+    <h1>Pilotos de Fórmula 1</h1>
+    <p>Temporada 2025</p>
+  </header>
+  
+  <main id="contenedor-pilotos"></main>
+  <driver-detail></driver-detail>
+  
+  <!-- Importación de Web Components -->
+  <script type="module" src="../components/drivers/driverDetail.js"></script>
+  <script type="module" src="../components/drivers/driversCards.js"></script>
+</body>
+</html>
