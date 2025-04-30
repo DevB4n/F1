@@ -34,7 +34,6 @@ signIn.addEventListener('click',()=>{
     popUp.style.opacity = 1;
     popUp.style.pointerEvents = 'auto';
     popUp.style.transform = 'scale(1)';
-
     document.body.classList.add('blur-active');
 })
 
@@ -43,10 +42,9 @@ login.addEventListener('click', () =>{
     popUp.style.pointerEvents = 'none';
     popUp.style.transform = 'scale(0.8)';
 
-    const usuario = document.getElementById('usuario-registro')
-    const contraseña = document.getElementById('usuario-password')
+    const usuario = document.getElementById('usuario-registro').value
+    const contraseña = document.getElementById('usuario-password').value
 
-    cargarUsuarios()
     loginUsuarios(usuario,contraseña)
 
     document.body.classList.remove('blur-active');
@@ -67,3 +65,4 @@ registerConfirm.addEventListener('click', () => {
     registerPopUp.style.transform = 'scale(0.8)';
     document.body.classList.remove('blur-active');
 })
+

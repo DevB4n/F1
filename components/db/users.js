@@ -3,13 +3,29 @@
 export const cargarUsuarios = async () =>{
     const respuesta = await fetch('./db/users/users.json')
     const usuariosData = await respuesta.json();
-    console.log(usuariosData)  
+    return usuariosData  
 }
 
 //funcion para filtrar
 
 
 export const loginUsuarios = async(nombre,contraseña) =>{
-    console.log(nombre.value)
-    console.log(contraseña.value)    
+    const listaUsuarios = await cargarUsuarios()
+    console.log(contraseña)
+    console.log(nombre)
+
+    const usuarioEncontrado = listaUsuarios.find(
+        usuario => usuario.nombre == nombre && usuario.contraseña == contraseña
+    )
+
+    if (usuarioEncontrado){
+        alert('se inicio sesion correctamente')
+        if(usuarioEncontrado.clase == 'admin'){
+            localStorage.setItem('admin', true)
+        }
+        return true
+    }else{
+        alert ('cuenta no encontrada')
+        return false
+    }
 }
