@@ -4,6 +4,8 @@ const popUp = document.getElementById('pop-up')
 const signIn = document.getElementById('log-in-btn')
 const login = document.getElementById('login-button')
 
+import { cargarUsuarios } from "./components/db/users.js"
+
 // boton de registrar
 const registerPopUp = document.getElementById('register-pop-up')
 const registerBtn = document.getElementById('sign-in-btn')
@@ -15,6 +17,9 @@ signIn.addEventListener('click',()=>{
     popUp.style.opacity = 1;
     popUp.style.pointerEvents = 'auto';
     popUp.style.transform = 'scale(1)';
+
+    cargarUsuarios()
+
     document.body.classList.add('blur-active');
 })
 
