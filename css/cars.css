@@ -28,3 +28,12 @@ h1 {
     border-bottom: 3px solid #e10600;
     position: relative;
 }
+
+#contenedor-coches {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 35px;
+    max-width: 1200px;
+    margin: 0 auto;
+}

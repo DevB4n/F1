@@ -21,7 +21,8 @@ class CarCard extends HTMLElement {
                     border-radius: 10px;
                     overflow: hidden;
                     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
-                    transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    transitio
+                    n: transform 0.3s ease, box-shadow 0.3s ease;
                     background: #111; /* Fondo oscuro como un coche de carreras */
                     width: 100%;
                 }
