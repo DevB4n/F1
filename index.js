@@ -4,7 +4,6 @@ const popUp = document.getElementById('pop-up')
 const signIn = document.getElementById('log-in-btn')
 const login = document.getElementById('login-button')
 
-import { cargarUsuarios } from "./components/db/users.js"
 import {loginUsuarios} from "./components/db/users.js"
 
 // boton de registrar
@@ -26,6 +25,7 @@ window.addEventListener('load', () => {
       setTimeout(() => loader.remove(), 500); // Da tiempo a que desaparezca visualmente
     });
 });
+
 
 
 //sign in boton

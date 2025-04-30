@@ -6,8 +6,10 @@ export const cargarUsuarios = async () =>{
     return usuariosData  
 }
 
-//funcion para filtrar
 
+
+
+//comprobacion de admin y login de usuario
 
 export const loginUsuarios = async(nombre,contraseña) =>{
     const listaUsuarios = await cargarUsuarios()
