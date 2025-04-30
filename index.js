@@ -11,6 +11,22 @@ const registerPopUp = document.getElementById('register-pop-up')
 const registerBtn = document.getElementById('sign-in-btn')
 const registerConfirm = document.getElementById('register-button')
 
+
+//PANTALLA DE CARGA INICIAL
+
+window.addEventListener('load', () => {
+    const loader = document.getElementById('f1-loader');
+    const barFill = document.getElementById('f1-bar-fill');
+
+    // Esperar a que la animación de la barra termine (3s)
+    barFill.addEventListener('animationend', () => {
+        loader.style.opacity = 0;
+        loader.style.pointerEvents = 'none';
+      setTimeout(() => loader.remove(), 500); // Da tiempo a que desaparezca visualmente
+    });
+});
+
+
 //sign in boton
 
 signIn.addEventListener('click',()=>{

@@ -15,7 +15,54 @@ body {
   font-family: 'Poppins-Regular', sans-serif;
   line-height: 1.6;
 }
+/*AQUI INICIA LA PANTALLA DE CARGA DEL INICIO*/
+#f1-loader {
+  position: fixed;
+  inset: 0;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  color: white;
+  font-family: 'Poppins-Medium', sans-serif;
+  transition: opacity 0.5s ease;
+}
 
+#f1-loader-logo {
+  width: 120px;
+  animation: rotateLogo 2s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes rotateLogo {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#f1-progress-bar {
+  width: 60%;
+  height: 8px;
+  background-color: #444;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+#f1-bar-fill {
+  width: 0%;
+  height: 100%;
+  background-color: red;
+  animation: fillBar 3s ease-out forwards;
+}
+
+@keyframes fillBar {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+/*AQUI ACABA*/
 
 nav {
   width: 100%;
