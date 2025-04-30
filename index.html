@@ -1,78 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>F1</title>
-    <link rel="icon" href="assets/icons/f1-favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="index.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>F1</title>
+  <link rel="icon" href="assets/icons/f1-favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <!--AQUI INICIA LA PANTLLA DE CARGA-->
-    <div id="f1-loader">
-        <img src="assets/icons/f1-icon-register.png" alt="F1 Loading Icon" id="f1-loader-logo" />
-        <div id="f1-progress-bar">
-        <div id="f1-bar-fill"></div>
-        </div>
-        <p>Cargando carrera...</p>
+  <!-- PANTALLA DE CARGA -->
+  <div id="f1-loader">
+    <img src="assets/icons/f1-icon-register.png" alt="F1 Loading Icon" id="f1-loader-logo" />
+    <div id="f1-progress-bar">
+      <div id="f1-bar-fill"></div>
     </div>
-    <!--AQUI ACABA-->
-    <nav>
-        <div id="f1-menu-image">
-            <img src="assets/icons/f1-menu.png" alt="f1 image">
-        </div>
-        <ul>
-            <li> <a href="pages/circuits.html">Circuits</a></li>
-            <li> <a href="pages/drivers.html">Drivers</a></li>
-            <li> <a href="pages/cars.html">Cars</a></li>
-            <li> <a href="pages/simulation.html">Simulation</a></li>
-        </ul>
-        <div id="account">
-            <button id="sign-in-btn">REGISTER</button>
-            <button id="log-in-btn">SIGN IN</button>
-        </div>
-    </nav>
-    <section id="banner">
-        <video id="video-banner" width="max-width" controls>
-            <source src='assets/videos/banner.mp4'>
-        </video>
-    </section>
-
-    <section id="pop-up">
-        <div id="header">
-            <img src="assets/icons/f1-icon-register.png">
-        </div>
-        <div id="register-information">
-            <h2>Usuario</h2>
-            <form action="">
-                <input id="usuario-registro" type="text" placeholder="nombre de usuario">
-            </form>
-            <h2>Contraseña</h2>
-            <form action="">
-                <input id="usuario-password" type="password" placeholder="contraseña">
-            </form>
-            <button id="login-button">Login</button>
-            
-        </div>
-    </section>
-
-    <section id="register-pop-up">
-        <div id="header">
-            <img src="assets/icons/f1-icon-register.png">
-        </div>
-        <div id="register-information">
-            <h2>Registrar usuario</h2>
-            <form>
-            <input id="new-user" type="text" placeholder="Nuevo usuario">
-        </form>
-        <h2>Contraseña</h2>
-        <form>
-            <input id="new-password" type="password" placeholder="Nueva contraseña">
-        </form>
-            <button id="register-button">Registrar</button>
-        </div>
-    </section>
-
-    <script src='index.js' type="module" defer ></script>
+    <p>Cargando carrera...</p>
+  </div>
+  
+  <nav>
+    <div id="f1-menu-image">
+      <img src="assets/icons/f1-menu.png" alt="f1 image">
+    </div>
+    <ul>
+      <li><a href="pages/circuits.html">Circuits</a></li>
+      <li><a href="pages/drivers.html">Drivers</a></li>
+      <li><a href="pages/cars.html">Cars</a></li>
+      <li><a href="pages/simulation.html">Simulation</a></li>
+    </ul>
+    <div id="account">
+      <div id="user-info" style="display: none;"></div>
+      <button id="sign-in-btn">REGISTER</button>
+      <button id="log-in-btn">SIGN IN</button>
+    </div>
+  </nav>
+  
+  <section id="banner">
+    <video id="video-banner" width="max-width" controls>
+      <source src='assets/videos/banner.mp4'>
+    </video>
+  </section>
+  
+  <!-- Modal de Inicio de Sesión -->
+  <section id="pop-up">
+    <div id="header">
+      <img src="assets/icons/f1-icon-register.png">
+      <button id="close-login" style="position: absolute; right: 10px; top: 10px; background: none; border: none; color: white; cursor: pointer; font-size: 20px;">×</button>
+    </div>
+    <div id="register-information">
+      <h2>Usuario</h2>
+      <input id="usuario-registro" type="text" placeholder="nombre de usuario">
+      <h2>Contraseña</h2>
+      <input id="usuario-password" type="password" placeholder="contraseña">
+      <button id="login-button">Login</button>
+    </div>
+  </section>
+  
+  <!-- Modal de Registro -->
+  <section id="register-pop-up">
+    <div id="header">
+      <img src="assets/icons/f1-icon-register.png">
+      <button id="close-register" style="position: absolute; right: 10px; top: 10px; background: none; border: none; color: white; cursor: pointer; font-size: 20px;">×</button>
+    </div>
+    <div id="register-information">
+      <h2>Registrar usuario</h2>
+      <input id="new-user" type="text" placeholder="Nuevo usuario">
+      <h2>Contraseña</h2>
+      <input id="new-password" type="password" placeholder="Nueva contraseña">
+      <h2>Confirmar contraseña</h2>
+      <input id="confirm-password" type="password" placeholder="Confirmar contraseña">
+      <button id="register-button">Registrar</button>
+    </div>
+  </section>
+  
+  <!-- Opcional: Panel de administrador, visible solo para admins -->
+  <div id="admin-panel" style="display: none; margin: 20px; padding: 20px; background-color: #f8f8f8; border-radius: 5px;">
+    <h3>Panel de Administrador</h3>
+    <p>Bienvenido al panel de administración.</p>
+  </div>
+  
+  <script src='index.js' type="module" defer></script>
 </body>
 </html>

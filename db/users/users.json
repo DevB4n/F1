@@ -1,6 +1,6 @@
 [
     {
-        "id":"1",
+        "id":1,
         "nombre":"admin",
         "contraseña":"admin",
         "clase":"admin"
