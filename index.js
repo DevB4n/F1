@@ -5,6 +5,7 @@ const signIn = document.getElementById('log-in-btn')
 const login = document.getElementById('login-button')
 
 import { cargarUsuarios } from "./components/db/users.js"
+import {loginUsuarios} from "./components/db/users.js"
 
 // boton de registrar
 const registerPopUp = document.getElementById('register-pop-up')
@@ -34,8 +35,6 @@ signIn.addEventListener('click',()=>{
     popUp.style.pointerEvents = 'auto';
     popUp.style.transform = 'scale(1)';
 
-    cargarUsuarios()
-
     document.body.classList.add('blur-active');
 })
 
@@ -43,6 +42,13 @@ login.addEventListener('click', () =>{
     popUp.style.opacity = 0;
     popUp.style.pointerEvents = 'none';
     popUp.style.transform = 'scale(0.8)';
+
+    const usuario = document.getElementById('usuario-registro')
+    const contraseña = document.getElementById('usuario-password')
+
+    cargarUsuarios()
+    loginUsuarios(usuario,contraseña)
+
     document.body.classList.remove('blur-active');
 })
 
