@@ -23,7 +23,7 @@
                 "desgaste_neumaticos": { "seco": 1.0, "lluvioso": 0.5, "extremo": 1.8 }
             }
         },
-        "imagen": "https://upload.wikimedia.org/wikipedia/commons/8/89/Max_Verstappen_2023_Austria_FP2_%28cropped%29.jpg"
+        "imagen": "https://img.redbull.com/images/c_crop,x_0,y_475,h_1800,w_4000/c_fill,w_1400,h_635/q_auto,f_auto/redbullcom/2024/5/7/im9j30trz761ylxebhfg/rb20-oracle-red-bull-racing-car"
     },
     {
         "equipo": "Mercedes-AMG Petronas",
@@ -49,6 +49,214 @@
                 "desgaste_neumaticos": { "seco": 1.1, "lluvioso": 0.6, "extremo": 1.9 }
             }
         },
-        "imagen": "https://upload.wikimedia.org/wikipedia/commons/8/87/Lewis_Hamilton_2022_Imola.jpg"
+        "imagen": "https://p.turbosquid.com/ts-thumb/My/iCUpeJ/fo/w15_0000/jpg/1715059275/2560x1440/fit_q99/a0ff22377a919678b5ffd708cb065accc429fa43/w15_0000.jpg"
+    },
+    {
+        "equipo": "Ferrari",
+        "modelo": "SF-24",
+        "motor": "Ferrari",
+        "velocidad_maxima_kmh": 350,
+        "aceleracion_0_100": 2.6,
+        "pilotos": [5, 6],
+        "rendimiento": {
+            "conduccion_normal": {
+                "velocidad_promedio_kmh": 310,
+                "consumo_combustible": { "seco": 2.0, "lluvioso": 2.3, "extremo": 2.6 },
+                "desgaste_neumaticos": { "seco": 1.7, "lluvioso": 0.9, "extremo": 2.7 }
+            },
+            "conduccion_agresiva": {
+                "velocidad_promedio_kmh": 330,
+                "consumo_combustible": { "seco": 2.7, "lluvioso": 2.9, "extremo": 3.3 },
+                "desgaste_neumaticos": { "seco": 2.4, "lluvioso": 1.5, "extremo": 3.9 }
+            },
+            "ahorro_combustible": {
+                "velocidad_promedio_kmh": 290,
+                "consumo_combustible": { "seco": 1.8, "lluvioso": 2.0, "extremo": 2.3 },
+                "desgaste_neumaticos": { "seco": 1.2, "lluvioso": 0.7, "extremo": 2.0 }
+            }
+        },
+        "imagen": "https://upload.wikimedia.org/wikipedia/commons/4/43/Ferrari_SF-24_launch_2024.jpg"
+    },
+    {
+        "equipo": "McLaren",
+        "modelo": "MCL38",
+        "motor": "Mercedes",
+        "velocidad_maxima_kmh": 352,
+        "aceleracion_0_100": 2.6,
+        "pilotos": [7, 8],
+        "rendimiento": {
+            "conduccion_normal": {
+                "velocidad_promedio_kmh": 312,
+                "consumo_combustible": { "seco": 2.1, "lluvioso": 2.3, "extremo": 2.5 },
+                "desgaste_neumaticos": { "seco": 1.6, "lluvioso": 0.8, "extremo": 2.6 }
+            },
+            "conduccion_agresiva": {
+                "velocidad_promedio_kmh": 334,
+                "consumo_combustible": { "seco": 2.5, "lluvioso": 2.7, "extremo": 3.1 },
+                "desgaste_neumaticos": { "seco": 2.1, "lluvioso": 1.3, "extremo": 3.6 }
+            },
+            "ahorro_combustible": {
+                "velocidad_promedio_kmh": 292,
+                "consumo_combustible": { "seco": 1.7, "lluvioso": 1.9, "extremo": 2.2 },
+                "desgaste_neumaticos": { "seco": 1.1, "lluvioso": 0.6, "extremo": 1.9 }
+            }
+        },
+        "imagen": "https://upload.wikimedia.org/wikipedia/commons/0/07/McLaren_MCL38_2024.jpg"
+    },
+    {
+        "equipo": "Aston Martin",
+        "modelo": "AMR24",
+        "motor": "Mercedes",
+        "velocidad_maxima_kmh": 348,
+        "aceleracion_0_100": 2.7,
+        "pilotos": [9, 10],
+        "rendimiento": {
+            "conduccion_normal": {
+                "velocidad_promedio_kmh": 308,
+                "consumo_combustible": { "seco": 2.2, "lluvioso": 2.4, "extremo": 2.7 },
+                "desgaste_neumaticos": { "seco": 1.8, "lluvioso": 1.0, "extremo": 2.8 }
+            },
+            "conduccion_agresiva": {
+                "velocidad_promedio_kmh": 328,
+                "consumo_combustible": { "seco": 2.8, "lluvioso": 3.0, "extremo": 3.4 },
+                "desgaste_neumaticos": { "seco": 2.5, "lluvioso": 1.6, "extremo": 4.0 }
+            },
+            "ahorro_combustible": {
+                "velocidad_promedio_kmh": 288,
+                "consumo_combustible": { "seco": 1.9, "lluvioso": 2.1, "extremo": 2.4 },
+                "desgaste_neumaticos": { "seco": 1.3, "lluvioso": 0.7, "extremo": 2.1 }
+            }
+        },
+        "imagen": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Aston_Martin_AMR24.jpg"
+    },
+    {
+        "equipo": "Alpine",
+        "modelo": "A524",
+        "motor": "Renault",
+        "velocidad_maxima_kmh": 345,
+        "aceleracion_0_100": 2.7,
+        "pilotos": [11, 12],
+        "rendimiento": {
+            "conduccion_normal": {
+                "velocidad_promedio_kmh": 305,
+                "consumo_combustible": { "seco": 2.1, "lluvioso": 2.3, "extremo": 2.5 },
+                "desgaste_neumaticos": { "seco": 1.6, "lluvioso": 0.9, "extremo": 2.7 }
+            },
+            "conduccion_agresiva": {
+                "velocidad_promedio_kmh": 326,
+                "consumo_combustible": { "seco": 2.6, "lluvioso": 2.9, "extremo": 3.2 },
+                "desgaste_neumaticos": { "seco": 2.3, "lluvioso": 1.4, "extremo": 3.8 }
+            },
+            "ahorro_combustible": {
+                "velocidad_promedio_kmh": 285,
+                "consumo_combustible": { "seco": 1.8, "lluvioso": 2.0, "extremo": 2.3 },
+                "desgaste_neumaticos": { "seco": 1.2, "lluvioso": 0.6, "extremo": 1.9 }
+            }
+        },
+        "imagen": "https://upload.wikimedia.org/wikipedia/commons/9/98/Alpine_A524_2024.jpg"
+    },
+    {
+        "equipo": "Alfa Romeo",
+        "modelo": "C44",
+        "motor": "Ferrari",
+        "velocidad_maxima_kmh": 342,
+        "aceleracion_0_100": 2.7,
+        "pilotos": [13, 14],
+        "rendimiento": {
+            "conduccion_normal": {
+                "velocidad_promedio_kmh": 300,
+                "consumo_combustible": { "seco": 2.2, "lluvioso": 2.4, "extremo": 2.6 },
+                "desgaste_neumaticos": { "seco": 1.7, "lluvioso": 1.0, "extremo": 2.9 }
+            },
+            "conduccion_agresiva": {
+                "velocidad_promedio_kmh": 320,
+                "consumo_combustible": { "seco": 2.7, "lluvioso": 2.9, "extremo": 3.2 },
+                "desgaste_neumaticos": { "seco": 2.4, "lluvioso": 1.6, "extremo": 3.9 }
+            },
+            "ahorro_combustible": {
+                "velocidad_promedio_kmh": 282,
+                "consumo_combustible": { "seco": 1.9, "lluvioso": 2.1, "extremo": 2.4 },
+                "desgaste_neumaticos": { "seco": 1.3, "lluvioso": 0.7, "extremo": 2.0 }
+            }
+        },
+        "imagen": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Kick_Sauber_C44_2024.jpg"
+    },
+    {
+        "equipo": "Haas",
+        "modelo": "VF-24",
+        "motor": "Ferrari",
+        "velocidad_maxima_kmh": 340,
+        "aceleracion_0_100": 2.8,
+        "pilotos": [15, 16],
+        "rendimiento": {
+            "conduccion_normal": {
+                "velocidad_promedio_kmh": 298,
+                "consumo_combustible": { "seco": 2.3, "lluvioso": 2.5, "extremo": 2.7 },
+                "desgaste_neumaticos": { "seco": 1.8, "lluvioso": 1.1, "extremo": 3.0 }
+            },
+            "conduccion_agresiva": {
+                "velocidad_promedio_kmh": 318,
+                "consumo_combustible": { "seco": 2.9, "lluvioso": 3.1, "extremo": 3.5 },
+                "desgaste_neumaticos": { "seco": 2.6, "lluvioso": 1.8, "extremo": 4.2 }
+            },
+            "ahorro_combustible": {
+                "velocidad_promedio_kmh": 278,
+                "consumo_combustible": { "seco": 2.0, "lluvioso": 2.2, "extremo": 2.5 },
+                "desgaste_neumaticos": { "seco": 1.4, "lluvioso": 0.8, "extremo": 2.2 }
+            }
+        },
+        "imagen": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Haas_VF-24_2024.jpg"
+    },
+    {
+        "equipo": "AlphaTauri",
+        "modelo": "AT04",
+        "motor": "Honda",
+        "velocidad_maxima_kmh": 345,
+        "aceleracion_0_100": 2.7,
+        "pilotos": [17, 18],
+        "rendimiento": {
+            "conduccion_normal": {
+                "velocidad_promedio_kmh": 302,
+                "consumo_combustible": { "seco": 2.1, "lluvioso": 2.3, "extremo": 2.6 },
+                "desgaste_neumaticos": { "seco": 1.7, "lluvioso": 0.9, "extremo": 2.8 }
+            },
+            "conduccion_agresiva": {
+                "velocidad_promedio_kmh": 322,
+                "consumo_combustible": { "seco": 2.8, "lluvioso": 3.0, "extremo": 3.3 },
+                "desgaste_neumaticos": { "seco": 2.5, "lluvioso": 1.5, "extremo": 4.0 }
+            },
+            "ahorro_combustible": {
+                "velocidad_promedio_kmh": 284,
+                "consumo_combustible": { "seco": 1.8, "lluvioso": 2.0, "extremo": 2.3 },
+                "desgaste_neumaticos": { "seco": 1.2, "lluvioso": 0.6, "extremo": 2.0 }
+            }
+        },
+        "imagen": "https://upload.wikimedia.org/wikipedia/commons/b/bf/AlphaTauri_AT04_2024.jpg"
+    },
+    {
+        "equipo": "Williams",
+        "modelo": "FW46",
+        "motor": "Mercedes",
+        "velocidad_maxima_kmh": 343,
+        "aceleracion_0_100": 2.7,
+        "pilotos": [19, 20],
+        "rendimiento": {
+            "conduccion_normal": {
+                "velocidad_promedio_kmh": 301,
+                "consumo_combustible": { "seco": 2.2, "lluvioso": 2.4, "extremo": 2.7 },
+                "desgaste_neumaticos": { "seco": 1.8, "lluvioso": 0.9, "extremo": 2.9 }
+            },
+            "conduccion_agresiva": {
+                "velocidad_promedio_kmh": 321,
+                "consumo_combustible": { "seco": 2.9, "lluvioso": 3.1, "extremo": 3.4 },
+                "desgaste_neumaticos": { "seco": 2.6, "lluvioso": 1.6, "extremo": 4.1 }
+            },
+            "ahorro_combustible": {
+                "velocidad_promedio_kmh": 283,
+                "consumo_combustible": { "seco": 1.9, "lluvioso": 2.1, "extremo": 2.4 },
+                "desgaste_neumaticos": { "seco": 1.3, "lluvioso": 0.7, "extremo": 2.1 }
+            }
+        },
+        "imagen": "https://upload.wikimedia.org/wikipedia/commons/0/00/Williams_FW46_2024.jpg"
     }
 ]
