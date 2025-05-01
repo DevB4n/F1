@@ -165,8 +165,4 @@ document.addEventListener("DOMContentLoaded", () => {
                 contenedor.appendChild(card);
             });
         })
-        .catch((error) => {
-            console.error("Error loading team data:", error);
-            contenedor.innerHTML = "<p>Error al cargar los datos de equipos</p>";
-        });
 });
