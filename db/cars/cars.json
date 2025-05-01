@@ -23,7 +23,9 @@
                 "desgaste_neumaticos": { "seco": 1.0, "lluvioso": 0.5, "extremo": 1.8 }
             }
         },
-        "imagen": "https://img.redbull.com/images/c_crop,x_0,y_475,h_1800,w_4000/c_fill,w_1400,h_635/q_auto,f_auto/redbullcom/2024/5/7/im9j30trz761ylxebhfg/rb20-oracle-red-bull-racing-car"
+        "imagen": "https://i.namu.wiki/i/5vWT3pTOi7FoVzD62lPRGkOZMY69K35iSDTvJPA-9NvvIelIlCSv1g-q5-78JLH1IfXKwzJPcKRbgew5X-2c_w.webp",
+        "modelo3d_id": "2b81733c08c847a58ed531566688a464"
+
     },
     {
         "equipo": "Mercedes-AMG Petronas",
@@ -49,7 +51,9 @@
                 "desgaste_neumaticos": { "seco": 1.1, "lluvioso": 0.6, "extremo": 1.9 }
             }
         },
-        "imagen": "https://p.turbosquid.com/ts-thumb/My/iCUpeJ/fo/w15_0000/jpg/1715059275/2560x1440/fit_q99/a0ff22377a919678b5ffd708cb065accc429fa43/w15_0000.jpg"
+        "imagen": "https://i.namu.wiki/i/hgHtUhwsi4HRVyEO-D8ot5BeaUoqVsZVzUBwr2LCb1EdUd93zWd85YGy-Md0lO8q4TGg5eAYGriwattoXqTTEg.webp",
+        "modelo3d_id": "f210e49637fd49bfa52860d2e17dcf50"
+
     },
     {
         "equipo": "Ferrari",
@@ -75,7 +79,9 @@
                 "desgaste_neumaticos": { "seco": 1.2, "lluvioso": 0.7, "extremo": 2.0 }
             }
         },
-        "imagen": "https://upload.wikimedia.org/wikipedia/commons/4/43/Ferrari_SF-24_launch_2024.jpg"
+        "imagen": "https://i.namu.wiki/i/s0AqJAEfX1pd80IrkYlNhFMYBbUMtbwrpNnG-ZdIw7BOcioberwXlwjI-Iwti9Lw_UxGbb3AL5uF38sws3U0VQ.webp",
+        "modelo3d_id": "f1d0bc3eb28144efab3d60d67a9a890c"
+
     },
     {
         "equipo": "McLaren",
@@ -101,7 +107,9 @@
                 "desgaste_neumaticos": { "seco": 1.1, "lluvioso": 0.6, "extremo": 1.9 }
             }
         },
-        "imagen": "https://upload.wikimedia.org/wikipedia/commons/0/07/McLaren_MCL38_2024.jpg"
+        "imagen": "https://i.namu.wiki/i/nL_u-Ph3Btpo_1ZZrYzeerJYb98KbI7Ys-pydnpXbtNtErr2-14lFTGU2OAAQOjrckGLvtelibgXoygbJg9O5Q.webp",
+        "modelo3d_id": "61df207f43484fac9e045c561d54a418"
+
     },
     {
         "equipo": "Aston Martin",
@@ -127,7 +135,9 @@
                 "desgaste_neumaticos": { "seco": 1.3, "lluvioso": 0.7, "extremo": 2.1 }
             }
         },
-        "imagen": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Aston_Martin_AMR24.jpg"
+        "imagen": "https://s3.us-east-1.amazonaws.com/motorsport.com-cdn/static/custom/car-thumbs/F1_2024/F1_ASTON%20MARTIN%20AMR24.png",
+        "modelo3d_id": "a7d81a1b03134043ad7cbe9b5dedf04c"
+
     },
     {
         "equipo": "Alpine",
@@ -153,7 +163,9 @@
                 "desgaste_neumaticos": { "seco": 1.2, "lluvioso": 0.6, "extremo": 1.9 }
             }
         },
-        "imagen": "https://upload.wikimedia.org/wikipedia/commons/9/98/Alpine_A524_2024.jpg"
+        "imagen": "https://i.namu.wiki/i/pFWSH-fggvs1ULtojHTIp125U5LCbOaRiDlODYCWZaiVpTyxfvC_DbF3yqLMJgOjtLDBG2gRv2JngafYZ0Ligg.webp",
+        "modelo3d_id": "3a9cd2164c4d4a2dac327bb2826892a4"
+
     },
     {
         "equipo": "Alfa Romeo",
@@ -179,7 +191,9 @@
                 "desgaste_neumaticos": { "seco": 1.3, "lluvioso": 0.7, "extremo": 2.0 }
             }
         },
-        "imagen": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Kick_Sauber_C44_2024.jpg"
+        "imagen": "https://i.namu.wiki/i/ZW3GqENVTayf_H23V53vTG1pSgxH6rmXoijKlGT86acu-UpkCpqmmrDlXML5RVrvxb30oGrlMFQO_Cu4Som7_g.webp",
+        "modelo3d_id": "4a341389d9944d35a985ce93e6a709db"
+
     },
     {
         "equipo": "Haas",
@@ -205,7 +219,9 @@
                 "desgaste_neumaticos": { "seco": 1.4, "lluvioso": 0.8, "extremo": 2.2 }
             }
         },
-        "imagen": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Haas_VF-24_2024.jpg"
+        "imagen": "https://i.namu.wiki/i/Ck7eT3JWGOG_SShVJVDb4y9JKXGHFlNDxBLr_DGaFr904KIxDxs0CCFAbVjzyPk6cI8Vve5v_nzRaDda2vM13g.webp",
+        "modelo3d_id": "90fb9bf749804fbcaf240f6815758e67"
+
     },
     {
         "equipo": "AlphaTauri",
@@ -231,7 +247,9 @@
                 "desgaste_neumaticos": { "seco": 1.2, "lluvioso": 0.6, "extremo": 2.0 }
             }
         },
-        "imagen": "https://upload.wikimedia.org/wikipedia/commons/b/bf/AlphaTauri_AT04_2024.jpg"
+        "imagen": "https://soymotor.com/sites/default/files/styles/team_desk/public/2023-02/alphatauri-at04-f1-2023-soymotor_0.png.webp?itok=xfQWsfo6",
+        "modelo3d_id": "a8003f86f7a24dfbad6cbc1c90069eaf"
+
     },
     {
         "equipo": "Williams",
@@ -257,6 +275,8 @@
                 "desgaste_neumaticos": { "seco": 1.3, "lluvioso": 0.7, "extremo": 2.1 }
             }
         },
-        "imagen": "https://upload.wikimedia.org/wikipedia/commons/0/00/Williams_FW46_2024.jpg"
+        "imagen": "https://i.namu.wiki/i/pJOvcmKRgDSiXj8xNT8cu9tpPIukMDRKJVx7J8GVlM-Le0ZSYqHrVX-caaYuXRfsX1IB7TCHlaZSZd1DPoYZ1A.webp",
+        "modelo3d_id": "0bdb3e2a1c244e0bb4851abd3ff7e492"
+
     }
 ]
