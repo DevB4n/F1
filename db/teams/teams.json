@@ -4,20 +4,69 @@
         "pais": "Austria",
         "motor": "Honda",
         "pilotos": [1, 2],
-        "imagen": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Red_Bull_Racing_Logo.svg"
+        "imagen": "https://brandlogos.net/wp-content/uploads/2022/05/red_bull_racing-logo-brandlogos.net_.png"
     },
     {
         "nombre": "Mercedes-AMG Petronas",
         "pais": "Alemania",
         "motor": "Mercedes",
         "pilotos": [3, 4],
-        "imagen": "https://upload.wikimedia.org/wikipedia/commons/3/32/Mercedes_AMG_Petronas_F1_Team_logo.svg"
+        "imagen": "https://brandlogo.org/wp-content/uploads/2024/04/Mercedes-AMG-Petronas-F1-Team-Logo.png"
     },
     {
         "nombre": "Ferrari",
         "pais": "Italia",
         "motor": "Ferrari",
         "pilotos": [5, 6],
-        "imagen": "https://upload.wikimedia.org/wikipedia/en/d/d4/Scuderia_Ferrari_Logo.svg"
+        "imagen": "https://1000marcas.net/wp-content/uploads/2019/12/Ferrari-Logo.png"
+    },
+    {
+        "nombre": "McLaren",
+        "pais": "Reino Unido",
+        "motor": "Mercedes",
+        "pilotos": [7, 8],
+        "imagen": "https://cdn-3.motorsport.com/images/mgl/YEQJgyLY/s800/mclaren-f1-team-logo-1.jpg"
+    },
+    {
+        "nombre": "Aston Martin",
+        "pais": "Reino Unido",
+        "motor": "Mercedes",
+        "pilotos": [9, 10],
+        "imagen": "https://brandlogo.org/wp-content/uploads/2024/04/Aston-Martin-Aramco-Cognizant-F1-Team-Logo.png.webp"
+    },
+    {
+        "nombre": "Alpine",
+        "pais": "Francia",
+        "motor": "Renault",
+        "pilotos": [11, 12],
+        "imagen": "https://fbi.cults3d.com/uploaders/15119367/illustration-file/66644f56-347e-4b28-8fbd-b95ebe714814/img-95086.jpg"
+    },
+    {
+        "nombre": "Alfa Romeo",
+        "pais": "Suiza",
+        "motor": "Ferrari",
+        "pilotos": [13, 14],
+        "imagen": "https://upload.wikimedia.org/wikipedia/it/archive/5/55/20190729114532%21Logo_Alfa_Romeo_Racing.png"
+    },
+    {
+        "nombre": "Haas",
+        "pais": "Estados Unidos",
+        "motor": "Ferrari",
+        "pilotos": [15, 16],
+        "imagen": "https://cdn.worldvectorlogo.com/logos/haas-f1-team-logo.svg"
+    },
+    {
+        "nombre": "AlphaTauri",
+        "pais": "Italia",
+        "motor": "Honda",
+        "pilotos": [17, 18],
+        "imagen": "https://www.cdnlogo.com/logos/s/34/scuderia-alpha-tauri.svg"
+    },
+    {
+        "nombre": "Williams",
+        "pais": "Reino Unido",
+        "motor": "Mercedes",
+        "pilotos": [19, 20],
+        "imagen": "https://hips.hearstapps.com/es.h-cdn.co/cades/contenidos/22860/williams_f1_team_logo.jpg"
     }
 ]

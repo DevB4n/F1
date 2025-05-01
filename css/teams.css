@@ -1,8 +1,10 @@
+/* CSS Document */
+/* Teams CSS */
+
 @font-face {
     font-family: 'Formula1';
     src: url('../assets/fonts/f1/Formula\ 1.otf') format('truetype');
 }
-
 
 * {
     box-sizing: border-box;
@@ -10,14 +12,13 @@
     padding: 0;
     font-family: Arial, sans-serif;
 }
-
 body {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://i.pinimg.com/736x/14/34/6b/14346bf4e7e6864f7437059abd9c4bae.jpg');
-    background-position: center;
-    background-size: cover;
     padding: 20px;
     overflow-x: hidden;
     overflow-y: auto;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://media.gq.com.mx/photos/6406424fe64540fddb4c2561/16:9/w_2560%2Cc_limit/pilotos%2520de%2520la%2520f1-1247830340.jpg');
+    background-position: center;
+    background-size: cover;
 }
 
 header {
@@ -40,7 +41,7 @@ h1 {
 }
 
 
-#contenedor-pilotos {
+#contenedor-teams {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

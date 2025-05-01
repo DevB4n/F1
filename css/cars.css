@@ -1,4 +1,9 @@
 
+@font-face {
+    font-family: 'Formula1';
+    src: url('../assets/fonts/f1/Formula\ 1.otf') format('truetype');
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -7,11 +12,14 @@
 }
 
 body {
-    background: linear-gradient(135deg, #eaeaea, #000000);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://cdn.wallpapersafari.com/65/44/xkwzSW.jpg');
     padding: 20px;
     min-height: 100vh;
     overflow-x: hidden;
     overflow-y: auto;
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
 }
 header {
     text-align: center;
@@ -19,6 +27,7 @@ header {
 }
 
 h1 {
+    font-family: 'Formula1', cursive;
     color: #e10600;
     margin-bottom: 20px;
     font-size: 2.5rem;
