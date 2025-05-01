@@ -3,13 +3,14 @@ class CarDetail extends HTMLElement {
         super();
         this.attachShadow({ mode: "open" });
         this._isOpen = false;
+        this._sketchfabViewer = null;
         
         // Crear estructura base
         this.render();
     }
     
     static get observedAttributes() {
-        return ['equipo', 'modelo', 'motor', 'imagen'];
+        return ['equipo', 'modelo', 'motor', 'imagen', 'modelo3d_id'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
@@ -22,11 +23,13 @@ class CarDetail extends HTMLElement {
     get modelo() { return this.getAttribute('modelo') || ''; }
     get motor() { return this.getAttribute('motor') || ''; }
     get imagen() { return this.getAttribute('imagen') || ''; }
+    get modelo3d_id() { return this.getAttribute('modelo3d_id') || ''; }
     
     set equipo(val) { this.setAttribute('equipo', val); }
     set modelo(val) { this.setAttribute('modelo', val); }
     set motor(val) { this.setAttribute('motor', val); }
     set imagen(val) { this.setAttribute('imagen', val); }
+    set modelo3d_id(val) { this.setAttribute('modelo3d_id', val); }
     
     open() {
         this._isOpen = true;
@@ -35,12 +38,68 @@ class CarDetail extends HTMLElement {
         
         // Cargar todos los detalles del coche desde el JSON
         this.loadFullDetails();
+        
+        // Cargar el modelo 3D si hay un ID disponible
+        if (this.modelo3d_id) {
+            this.load3DModel();
+        }
     }
     
     close() {
         this._isOpen = false;
         this.shadowRoot.querySelector('.modal').classList.remove('active');
         document.body.style.overflow = '';
+        
+        // Limpiar el iframe del modelo 3D cuando se cierra
+        if (this._sketchfabViewer) {
+            this._sketchfabViewer = null;
+            const container = this.shadowRoot.querySelector('.modelo3d-container');
+            if (container) {
+                container.innerHTML = '';
+            }
+        }
+    }
+    
+    load3DModel() {
+        if (!this.modelo3d_id) return;
+        
+        const container = this.shadowRoot.querySelector('.modelo3d-container');
+        
+        // Limpiar el contenedor
+        container.innerHTML = '';
+        
+        // Crear iframe para el modelo de Sketchfab
+        const iframe = document.createElement('iframe');
+        iframe.setAttribute('src', `https://sketchfab.com/models/${this.modelo3d_id}/embed?autostart=1&ui_infos=0&ui_controls=1&ui_stop=0`);
+        iframe.setAttribute('width', '100%');
+        iframe.setAttribute('height', '100%');
+        iframe.setAttribute('frameborder', '0');
+        iframe.setAttribute('allow', 'autoplay; fullscreen; vr');
+        iframe.setAttribute('allowfullscreen', '');
+        
+        container.appendChild(iframe);
+    }
+    
+    toggleView() {
+        const imagenContainer = this.shadowRoot.querySelector('.imagen-container');
+        const modelo3dContainer = this.shadowRoot.querySelector('.modelo3d-container');
+        
+        if (imagenContainer.style.display === 'none') {
+            // Cambiar a vista de imagen
+            imagenContainer.style.display = 'flex';
+            modelo3dContainer.style.display = 'none';
+            this.shadowRoot.querySelector('.toggle-view-btn').textContent = 'Ver modelo 3D';
+        } else {
+            // Cambiar a vista 3D
+            imagenContainer.style.display = 'none';
+            modelo3dContainer.style.display = 'flex';
+            this.shadowRoot.querySelector('.toggle-view-btn').textContent = 'Ver imagen';
+            
+            // Cargar modelo 3D si no se ha cargado todavía
+            if (!modelo3dContainer.querySelector('iframe')) {
+                this.load3DModel();
+            }
+        }
     }
     
     loadFullDetails() {
@@ -55,6 +114,17 @@ class CarDetail extends HTMLElement {
                 if (cocheSeleccionado) {
                     // Actualizar el contenido de detalles con toda la información
                     this.updateDetailsContent(cocheSeleccionado);
+                    
+                    // Actualizar el atributo modelo3d_id si existe en los datos
+                    if (cocheSeleccionado.modelo3d_id) {
+                        this.modelo3d_id = cocheSeleccionado.modelo3d_id;
+                        
+                        // Mostrar el botón de toggle solo si hay modelo 3D
+                        const toggleBtn = this.shadowRoot.querySelector('.toggle-view-btn');
+                        if (toggleBtn) {
+                            toggleBtn.style.display = 'flex';
+                        }
+                    }
                 }
             })
     }
@@ -258,11 +328,30 @@ class CarDetail extends HTMLElement {
                     flex: 0 0 40%;
                     min-width: 350px;
                     background-color: #1a1a1a;
-                    display: flex;
+                    display: none; /* Oculta por defecto */
                     justify-content: center;
                     align-items: center;
                     padding: 20px;
                     position: relative;
+                }
+                
+                .modelo3d-container {
+                    flex: 0 0 45%;
+                    min-width: 350px;
+                    height: 550px; /* Altura aumentada */
+                    background-color: #1a1a1a;
+                    display: flex; /* Mostrado por defecto */
+                    justify-content: center;
+                    align-items: center;
+                    position: relative;
+                    overflow: hidden;
+                    border-radius: 10px 0 0 10px;
+                }
+                
+                .modelo3d-container iframe {
+                    width: 100%;
+                    height: 100%;
+                    border: none;
                 }
                 
                 .coche-imagen {
@@ -277,7 +366,7 @@ class CarDetail extends HTMLElement {
                 }
                 
                 .detalles-container {
-                    flex: 1 1 60%;
+                    flex: 1 1 55%;
                     padding: 25px;
                     overflow-y: auto;
                     color: #fff;
@@ -368,33 +457,9 @@ class CarDetail extends HTMLElement {
                     padding-top: 6px;
                     border-top: 1px dashed #444;
                 }
-                    box-shadow: 0 4px 8px rgba(229, 9, 20, 0.2);
-                }
                 
                 .detalle-item.expandible {
                     grid-column: span 2;
-                }
-                
-                .detalle-label {
-                    font-weight: bold;
-                    color: #e50914;
-                    display: block;
-                    margin-bottom: 6px;
-                    font-size: 0.9rem;
-                }
-                
-                .detalle-value {
-                    color: #ddd;
-                    font-size: 1.1rem;
-                }
-                
-                .sub-detalles {
-                    display: grid;
-                    grid-template-columns: repeat(3, 1fr);
-                    gap: 10px;
-                    margin-top: 6px;
-                    padding-top: 6px;
-                    border-top: 1px dashed #444;
                 }
                 
                 .sub-label {
@@ -433,6 +498,28 @@ class CarDetail extends HTMLElement {
                     background-color: #ff0f1b;
                 }
                 
+                .toggle-view-btn {
+                    position: absolute;
+                    top: 15px;
+                    left: 15px;
+                    background-color: #e50914;
+                    color: white;
+                    border: none;
+                    padding: 8px 12px;
+                    border-radius: 20px;
+                    font-size: 0.85rem;
+                    cursor: pointer;
+                    display: flex; /* Mostrado por defecto */
+                    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+                    transition: transform 0.2s, background-color 0.2s;
+                    z-index: 10;
+                }
+                
+                .toggle-view-btn:hover {
+                    transform: scale(1.05);
+                    background-color: #ff0f1b;
+                }
+                
                 /* Responsive */
                 @media (max-width: 768px) {
                     .modal-content {
@@ -440,10 +527,12 @@ class CarDetail extends HTMLElement {
                         width: 95%;
                     }
                     
-                    .imagen-container {
+                    .imagen-container,
+                    .modelo3d-container {
                         flex: 0 0 auto;
                         min-width: auto;
-                        max-height: 40vh;
+                        max-height: 350px; /* Altura para móviles */
+                        border-radius: 10px 10px 0 0;
                     }
                     
                     .detalles-container {
@@ -470,6 +559,9 @@ class CarDetail extends HTMLElement {
                     <div class="imagen-container">
                         <img class="coche-imagen" src="${this.imagen}" alt="${this.modelo}">
                     </div>
+                    <div class="modelo3d-container">
+                        <!-- Aquí se cargará el modelo 3D dinámicamente -->
+                    </div>
                     <div class="detalles-container">
                         <h2 class="titulo-detalle">${this.modelo}</h2>
                         <h3 class="subtitulo-detalle">${this.equipo}</h3>
@@ -481,6 +573,7 @@ class CarDetail extends HTMLElement {
                             </div>
                         </div>
                     </div>
+                    <button class="toggle-view-btn">Ver imagen</button>
                     <button class="cerrar-btn">✕</button>
                 </div>
             </div>
@@ -489,6 +582,11 @@ class CarDetail extends HTMLElement {
         // Añadir event listener para cerrar
         this.shadowRoot.querySelector('.cerrar-btn').addEventListener('click', () => {
             this.close();
+        });
+        
+        // Añadir event listener para cambiar entre vista de imagen y 3D
+        this.shadowRoot.querySelector('.toggle-view-btn').addEventListener('click', () => {
+            this.toggleView();
         });
         
         // Cerrar al hacer clic fuera del contenido
