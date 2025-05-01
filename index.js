@@ -1,5 +1,5 @@
 // Import funciones de gestión de usuarios
-import { crearUsuario, loginUsuarios, mostrarNotificacion } from './components/db/users.js';
+import { crearUsuario, loginUsuarios, mostrarNotificacion, cerrarSesion, verificarSesion, sincronizarAdmin, esAdmin } from './components/db/users.js';
 
 // Elementos del DOM
 const popUp = document.getElementById('pop-up');
@@ -20,9 +20,12 @@ function cerrarModal(modal) {
 }
 
 // Pantalla de carga
-window.addEventListener('load', () => {
+window.addEventListener('load', async () => {
     const loader = document.getElementById('f1-loader');
     const barFill = document.getElementById('f1-bar-fill');
+    
+    // Sincronizar el administrador con localStorage al cargar la página
+    await sincronizarAdmin();
     
     if (loader && barFill) {
         barFill.addEventListener('animationend', () => {
@@ -73,6 +76,9 @@ if (login) {
             } else {
                 mostrarNotificacion(`Bienvenido ${usuario}!`, 'exito');
             }
+            
+            // Actualizar la interfaz para reflejar el inicio de sesión
+            actualizarInterfazUsuario();
         }
     });
 }
@@ -117,9 +123,10 @@ if (registerConfirm) {
     });
 }
 
-// Función para verificar si hay sesión activa al cargar la página
-function verificarSesionActiva() {
-    const usuarioActual = JSON.parse(sessionStorage.getItem('usuarioActual'));
+// Función para actualizar la interfaz según el usuario
+function actualizarInterfazUsuario() {
+    const usuarioActual = verificarSesion();
+    const esAdministrador = esAdmin();
     
     if (usuarioActual) {
         // Actualizar la interfaz según el usuario
@@ -138,11 +145,17 @@ function verificarSesionActiva() {
             userInfoElement.style.display = 'flex';
             
             // Agregar evento al botón de cerrar sesión
-            document.getElementById('logout-btn').addEventListener('click', cerrarSesion);
+            document.getElementById('logout-btn').addEventListener('click', () => {
+                cerrarSesion();
+                // Recargar la página para actualizar la interfaz
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1000);
+            });
         }
         
         // Si es admin, mostrar enlaces o funcionalidades de administrador
-        if (usuarioActual.clase === 'admin') {
+        if (esAdministrador) {
             const adminPanel = document.getElementById('admin-panel');
             if (adminPanel) {
                 adminPanel.style.display = 'block';
@@ -151,17 +164,11 @@ function verificarSesionActiva() {
     }
 }
 
-// Función para cerrar sesión
-function cerrarSesion() {
-    sessionStorage.removeItem('usuarioActual');
-    localStorage.removeItem('admin');
-    mostrarNotificacion('Sesión cerrada correctamente', 'info');
-    
-    // Recargar la página para actualizar la interfaz
-    setTimeout(() => {
-        window.location.reload();
-    }, 1000);
-}
-
 // Verificar sesión al cargar la página
-document.addEventListener('DOMContentLoaded', verificarSesionActiva);
+document.addEventListener('DOMContentLoaded', () => {
+    // Sincronizar admin con localStorage
+    sincronizarAdmin().then(() => {
+        // Verificar sesión y actualizar interfaz
+        actualizarInterfazUsuario();
+    });
+});
