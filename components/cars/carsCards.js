@@ -8,7 +8,7 @@ class CarCard extends HTMLElement {
 
     connectedCallback() {
         const { equipo, modelo, motor, imagen, id } = this.dataset;
-
+    
         this.shadowRoot.innerHTML = `
             <style>
                 :host {
@@ -16,7 +16,7 @@ class CarCard extends HTMLElement {
                     margin: 20px;
                     width: 320px;
                 }
-
+    
                 .card {
                     position: relative;
                     cursor: pointer;
@@ -28,12 +28,12 @@ class CarCard extends HTMLElement {
                     background: #111;
                     width: 100%;
                 }
-
+    
                 .card:hover {
                     transform: scale(1.05);
                     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
                 }
-
+    
                 img {
                     width: 100%;
                     height: 150px;
@@ -43,33 +43,33 @@ class CarCard extends HTMLElement {
                     background-color: #1a1a1a;
                     padding: 10px 0;
                 }
-
+    
                 .info {
                     padding: 1rem;
                     background: #222;
                     color: #fff;
                     text-align: center;
                 }
-
+    
                 .modelo {
                     font-weight: bold;
                     font-size: 1.2rem;
                     margin: 0 0 0.5rem 0;
                     color: #e50914;
                 }
-
+    
                 .equipo {
                     font-size: 0.9rem;
                     color: #ccc;
                     margin: 0 0 0.5rem 0;
                 }
-
+    
                 .motor {
                     font-size: 0.8rem;
                     color: #aaa;
                     margin: 0;
                 }
-
+    
                 .admin-buttons {
                     display: ${esAdmin ? 'flex' : 'none'};
                     justify-content: space-around;
@@ -77,7 +77,7 @@ class CarCard extends HTMLElement {
                     background-color: #111;
                     border-top: 1px solid #333;
                 }
-
+    
                 button {
                     background-color: #e50914;
                     color: white;
@@ -87,12 +87,12 @@ class CarCard extends HTMLElement {
                     border-radius: 5px;
                     font-size: 0.8rem;
                 }
-
+    
                 button:hover {
                     background-color: #ff1f2d;
                 }
             </style>
-
+    
             <div class="card">
                 <img src="${imagen}" alt="${modelo}">
                 <div class="info">
@@ -106,22 +106,23 @@ class CarCard extends HTMLElement {
                 </div>
             </div>
         `;
-
+    
         const cardElement = this.shadowRoot.querySelector('.card');
-
+    
         cardElement.addEventListener('click', (e) => {
             // Evitar que haga click en el detalle si se presiona el botón
             if (e.target.tagName.toLowerCase() === 'button') return;
-
+    
             const detail = document.querySelector('car-detail');
             detail.setAttribute('equipo', equipo);
             detail.setAttribute('modelo', modelo);
             detail.setAttribute('motor', motor);
             detail.setAttribute('imagen', imagen);
             detail.setAttribute('id', id);
+            detail.setAttribute('modelo3d_id', id); // Aseguramos que modelo3d_id se pase correctamente
             detail.open();
         });
-
+    
         if (esAdmin) {
             this.shadowRoot.querySelector('.editar').addEventListener('click', () => {
                 const eventoEditar = new CustomEvent('editar-coche', {
@@ -131,7 +132,7 @@ class CarCard extends HTMLElement {
                 });
                 this.dispatchEvent(eventoEditar);
             });
-
+    
             this.shadowRoot.querySelector('.eliminar').addEventListener('click', () => {
                 const eventoEliminar = new CustomEvent('eliminar-coche', {
                     detail: { id },
@@ -142,7 +143,7 @@ class CarCard extends HTMLElement {
             });
         }
     }
-}
+}    
 
 customElements.define('car-card', CarCard);
 
@@ -375,7 +376,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }
     
-    // Función para actualizar los datos de un coche
     function actualizarCoche(cocheActualizado) {
         // Obtenemos la referencia a los datos actuales
         const STORAGE_KEY = 'f1_cars_data';
@@ -403,11 +403,6 @@ document.addEventListener('DOMContentLoaded', () => {
             );
             
             if (card) {
-                // Guardar la posición del coche
-                const contenedor = document.getElementById('contenedor-coches');
-                const position = Array.from(contenedor.children).indexOf(card);
-                const nextSibling = card.nextElementSibling;
-                
                 // Actualizar los datos del componente
                 card.dataset.equipo = cocheActualizado.equipo;
                 card.dataset.modelo = cocheActualizado.modelo;
@@ -422,8 +417,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 newCard.dataset.motor = cocheActualizado.motor;
                 newCard.dataset.imagen = cocheActualizado.imagen;
                 
+                // Obtener una referencia al contenedor para reemplazar
+                const contenedor = document.getElementById('contenedor-coches');
+                
                 // Eliminar el componente antiguo
-                card.remove();
+                const oldCard = card;
+                const nextSibling = oldCard.nextElementSibling;
+                oldCard.remove();
                 
                 // Insertar el nuevo componente en la misma posición
                 if (nextSibling) {
@@ -431,10 +431,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     contenedor.appendChild(newCard);
                 }
+                
+                // También actualizar el detalle si está abierto
+                const detail = document.querySelector('car-detail');
+                if (detail && detail._isOpen && detail.getAttribute('modelo') === cocheActualizado.modelo) {
+                    detail.setAttribute('equipo', cocheActualizado.equipo);
+                    detail.setAttribute('modelo', cocheActualizado.modelo);
+                    detail.setAttribute('motor', cocheActualizado.motor);
+                    detail.setAttribute('imagen', cocheActualizado.imagen);
+                    detail.setAttribute('id', cocheActualizado.modelo3d_id);
+                    detail.setAttribute('modelo3d_id', cocheActualizado.modelo3d_id);
+                    
+                    // Forzar una recarga de los detalles
+                    detail.loadFullDetails();
+                }
             }
             
             // Mostrar notificación
             mostrarNotificacion('Coche actualizado correctamente');
         }
     }
-});
+}
+);    

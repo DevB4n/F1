@@ -103,7 +103,36 @@ class CarDetail extends HTMLElement {
     }
     
     loadFullDetails() {
-        // Obtener todos los detalles del coche seleccionado
+        // Primero intentamos obtener los datos desde localStorage
+        const STORAGE_KEY = 'f1_cars_data';
+        const cachedData = localStorage.getItem(STORAGE_KEY);
+        
+        if (cachedData) {
+            const data = JSON.parse(cachedData);
+            // Encontrar el coche específico basado en modelo y equipo
+            const cocheSeleccionado = data.find(coche => 
+                coche.modelo === this.modelo && coche.equipo === this.equipo);
+            
+            if (cocheSeleccionado) {
+                // Actualizar el contenido de detalles con toda la información
+                this.updateDetailsContent(cocheSeleccionado);
+                
+                // Actualizar el atributo modelo3d_id si existe en los datos
+                if (cocheSeleccionado.modelo3d_id) {
+                    this.modelo3d_id = cocheSeleccionado.modelo3d_id;
+                    
+                    // Mostrar el botón de toggle solo si hay modelo 3D
+                    const toggleBtn = this.shadowRoot.querySelector('.toggle-view-btn');
+                    if (toggleBtn) {
+                        toggleBtn.style.display = 'flex';
+                    }
+                }
+                
+                return; // Si encontramos los datos en localStorage, no hacemos fetch
+            }
+        }
+        
+        // Como respaldo, obtenemos todos los detalles del coche desde el JSON original
         fetch('../db/cars/cars.json')
             .then(res => res.json())
             .then(data => {
@@ -127,7 +156,10 @@ class CarDetail extends HTMLElement {
                     }
                 }
             })
-    }
+            .catch(error => {
+                console.error('Error cargando detalles del coche:', error);
+            });
+    }    
     
     updateDetailsContent(coche) {
         const detallesDiv = this.shadowRoot.querySelector('.detalles-content');
@@ -599,3 +631,4 @@ class CarDetail extends HTMLElement {
 }
 
 customElements.define('car-detail', CarDetail);
+
