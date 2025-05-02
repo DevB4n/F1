@@ -15,6 +15,35 @@
 <div id="contenedor-coches"></div>
 
 <car-detail></car-detail>
+<div id="editor-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Editar Coche</h2>
+        <form id="editor-form">
+            <input type="hidden" id="coche-id">
+            <div class="form-group">
+                <label for="coche-equipo">Equipo:</label>
+                <input type="text" id="coche-equipo" required>
+            </div>
+            <div class="form-group">
+                <label for="coche-modelo">Modelo:</label>
+                <input type="text" id="coche-modelo" required>
+            </div>
+            <div class="form-group">
+                <label for="coche-motor">Motor:</label>
+                <input type="text" id="coche-motor" required>
+            </div>
+            <div class="form-group">
+                <label for="coche-imagen">URL de la imagen:</label>
+                <input type="url" id="coche-imagen" required>
+            </div>
+            <div class="form-buttons">
+                <button type="submit" class="guardar">Guardar Cambios</button>
+                <button type="button" class="cancelar">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>
 
 </body>
 </html>
