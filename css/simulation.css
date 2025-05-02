@@ -28,25 +28,25 @@ body, html {
 #titulo {
     position: relative; /* Esto es clave para que el h1 se centre correctamente */
     width: 100%;
-    height: 100px;
+    height: 120px;
 }
 
-#volver{
-    width:70px;
-    height:30px;
+#volver {
+    width: 70px;
+    height: 30px;
     font-family: 'Formula1';
-    margin-left:4%;
-    margin-top:26px;
-    background-color:transparent;
+    margin-left: 4%;
+    margin-top: 34px;
+    background-color: transparent;
     border: none;
     font-size: 30px;
-    color:white;
+    color: white;
 }
 
-#volver:hover{
+#volver:hover {
     font-size: 32px;
     opacity: 0.8;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .text,
@@ -59,7 +59,6 @@ body, html {
     letter-spacing: 20px;
     font-family: 'Formula1', sans-serif;
     color: #fff;
-
 }
 
 .text {
@@ -68,12 +67,12 @@ body, html {
 
 .shadow {
     text-shadow: 0 0 20px #fff,
-                0 0 30px #fff,
-                0 0 40px #228DFF,
-                0 0 70px #228DFF,
-                0 0 80px #228DFF,
-                0 0 100px #228DFF,
-                0 0 150px #228DFF;
+                 0 0 30px #fff,
+                 0 0 40px #228DFF,
+                 0 0 70px #228DFF,
+                 0 0 80px #228DFF,
+                 0 0 100px #228DFF,
+                 0 0 150px #228DFF;
 }
 
 .glow {
@@ -97,4 +96,64 @@ body, html {
     83% { opacity: 1; }
     92% { opacity: 0; }
     92.5% { opacity: 1; }
+}
+
+/* Menú desplegable */
+nav {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+}
+
+.menu-item {
+    position: relative;
+    font-family: 'Formula1';
+    font-size: 2.5em;
+    color: white;
+    cursor: pointer;
+    padding: 10px 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.menu-item:hover {
+    color: #228DFF;
+    text-shadow: 0 0 20px #228DFF, 0 0 30px #228DFF;
+}
+
+.menu-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+.menu-item:hover .submenu {
+    display: block;
+}
+
+.submenu li {
+    margin: 10px 0;
+}
+
+.submenu li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.5em;
+    display: block;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.submenu li a:hover {
+    background-color: #228DFF;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff;
 }
