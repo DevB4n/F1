@@ -291,7 +291,7 @@ class CarDetail extends HTMLElement {
                     left: 0;
                     width: 100%;
                     height: 100%;
-                    background-color: rgba(0, 0, 0, 0.8);
+                    background-color:   rgba(0, 0, 0, 0.8);
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -309,7 +309,7 @@ class CarDetail extends HTMLElement {
                     background-color: #222;
                     width: 90%;
                     max-width: 1100px;
-                    max-height: 90vh;
+                    max-height: 70vh;
                     border-radius: 15px;
                     overflow: auto;
                     box-shadow: 0 5px 25px rgba(229, 9, 20, 0.4);
@@ -338,7 +338,7 @@ class CarDetail extends HTMLElement {
                 .modelo3d-container {
                     flex: 0 0 45%;
                     min-width: 350px;
-                    height: 550px; /* Altura aumentada */
+                    height: 670px; /* Altura aumentada */
                     background-color: #1a1a1a;
                     display: flex; /* Mostrado por defecto */
                     justify-content: center;
