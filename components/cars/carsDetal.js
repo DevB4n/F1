@@ -10,7 +10,8 @@ class CarDetail extends HTMLElement {
     }
     
     static get observedAttributes() {
-        return ['equipo', 'modelo', 'motor', 'imagen', 'modelo3d_id'];
+        // Añadir velocidad y aceleracion a los atributos observados
+        return ['equipo', 'modelo', 'motor', 'imagen', 'modelo3d_id', 'velocidad', 'aceleracion', 'pilotos'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
@@ -24,12 +25,12 @@ class CarDetail extends HTMLElement {
     get motor() { return this.getAttribute('motor') || ''; }
     get imagen() { return this.getAttribute('imagen') || ''; }
     get modelo3d_id() { return this.getAttribute('modelo3d_id') || ''; }
-    
-    set equipo(val) { this.setAttribute('equipo', val); }
-    set modelo(val) { this.setAttribute('modelo', val); }
-    set motor(val) { this.setAttribute('motor', val); }
-    set imagen(val) { this.setAttribute('imagen', val); }
+    // Añadir getters para los nuevos atributos
+    get velocidad() { return this.getAttribute('velocidad') || ''; }
+    get aceleracion() { return this.getAttribute('aceleracion') || ''; }
+    get pilotos() { return this.getAttribute('pilotos') || ''; }
     set modelo3d_id(val) { this.setAttribute('modelo3d_id', val); }
+
     
     open() {
         this._isOpen = true;
@@ -109,11 +110,18 @@ class CarDetail extends HTMLElement {
         
         if (cachedData) {
             const data = JSON.parse(cachedData);
-            // Encontrar el coche específico basado en modelo y equipo
-            const cocheSeleccionado = data.find(coche => 
-                coche.modelo === this.modelo && coche.equipo === this.equipo);
+            // Buscar primero por modelo3d_id (más preciso)
+            let cocheSeleccionado = data.find(coche => 
+                coche.modelo3d_id === this.modelo3d_id);
+                
+            // Si no lo encuentra, buscar por modelo y equipo
+            if (!cocheSeleccionado) {
+                cocheSeleccionado = data.find(coche => 
+                    coche.modelo === this.modelo && coche.equipo === this.equipo);
+            }
             
             if (cocheSeleccionado) {
+                console.log("Coche encontrado para detalles:", cocheSeleccionado);
                 // Actualizar el contenido de detalles con toda la información
                 this.updateDetailsContent(cocheSeleccionado);
                 
@@ -129,6 +137,8 @@ class CarDetail extends HTMLElement {
                 }
                 
                 return; // Si encontramos los datos en localStorage, no hacemos fetch
+            } else {
+                console.error("No se encontró el coche en localStorage:", this.modelo, this.equipo, this.modelo3d_id);
             }
         }
         
@@ -154,12 +164,14 @@ class CarDetail extends HTMLElement {
                             toggleBtn.style.display = 'flex';
                         }
                     }
+                } else {
+                    console.error("No se encontró el coche en JSON:", this.modelo, this.equipo);
                 }
             })
             .catch(error => {
                 console.error('Error cargando detalles del coche:', error);
             });
-    }    
+    }
     
     updateDetailsContent(coche) {
         const detallesDiv = this.shadowRoot.querySelector('.detalles-content');
@@ -185,15 +197,15 @@ class CarDetail extends HTMLElement {
                     </div>
                     <div class="detalle-item">
                         <span class="detalle-label">Velocidad Máxima:</span>
-                        <span class="detalle-value">${coche.velocidad_maxima_kmh} km/h</span>
+                        <span class="detalle-value">${coche.velocidad || coche.velocidad_maxima_kmh || 'N/A'} km/h</span>
                     </div>
                     <div class="detalle-item">
                         <span class="detalle-label">Aceleración 0-100:</span>
-                        <span class="detalle-value">${coche.aceleracion_0_100} segundos</span>
+                        <span class="detalle-value">${coche.aceleracion || coche.aceleracion_0_100 || 'N/A'} segundos</span>
                     </div>
                     <div class="detalle-item">
-                        <span class="detalle-label">Pilotos ID:</span>
-                        <span class="detalle-value">${Array.isArray(coche.pilotos) ? coche.pilotos.join(', ') : coche.pilotos}</span>
+                        <span class="detalle-label">Pilotos:</span>
+                        <span class="detalle-value">${coche.pilotos ? coche.pilotos : (Array.isArray(coche.pilotos) ? coche.pilotos.join(', ') : 'N/A')}</span>
                     </div>
                 </div>
             </div>
@@ -370,7 +382,7 @@ class CarDetail extends HTMLElement {
                 .modelo3d-container {
                     flex: 0 0 45%;
                     min-width: 350px;
-                    height: 670px; /* Altura aumentada */
+                    height: auto;
                     background-color: #1a1a1a;
                     display: flex; /* Mostrado por defecto */
                     justify-content: center;
@@ -603,6 +615,14 @@ class CarDetail extends HTMLElement {
                                 <span class="detalle-label">Motor:</span>
                                 <span class="detalle-value">${this.motor}</span>
                             </div>
+                            <div class="detalle-item">
+                                <span class="detalle-label">Velocidad Máxima:</span>
+                                <span class="detalle-value">${this.velocidad || 'N/A'} km/h</span>
+                            </div>
+                            <div class="detalle-item">
+                                <span class="detalle-label">Aceleración 0-100:</span>
+                                <span class="detalle-value">${this.aceleracion || 'N/A'} segundos</span>
+                            </div>
                         </div>
                     </div>
                     <button class="toggle-view-btn">Ver imagen</button>
@@ -631,4 +651,3 @@ class CarDetail extends HTMLElement {
 }
 
 customElements.define('car-detail', CarDetail);
-
