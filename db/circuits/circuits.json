@@ -15,7 +15,7 @@
             { "temporada": 2022, "piloto": 2 },
             { "temporada": 2023, "piloto": 1 }
         ],
-        "imagen": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Monte_Carlo_Formula_1_track_map.svg"
+        "imagen": "https://img.redbull.com/images/c_limit,w_1500,h_1000/f_auto,q_auto/redbullcom/2021/5/18/ipsdfstmkuw0faah8vru/guia-circuito-monaco-formula-1"
     },
     {
         "nombre": "Silverstone",
@@ -33,7 +33,7 @@
             { "temporada": 2022, "piloto": 5 },
             { "temporada": 2023, "piloto": 1 }
         ],
-        "imagen": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Silverstone_Circuit_2020_layout.png"
+        "imagen": "https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/Great%20Britain.jpg"
     },
     {
         "nombre": "Circuito de Spa-Francorchamps",
@@ -51,7 +51,7 @@
             { "temporada": 2022, "piloto": 1 },
             { "temporada": 2023, "piloto": 1 }
         ],
-        "imagen": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Circuit_Spa_2018.png"
+        "imagen": "https://gascommunity.com/wp-content/uploads/2019/12/Spa-Francorchamps-Emocio%CC%81n-en-el-corazo%CC%81n-de-las-ardenas.jpg"
     },
     {
         "nombre": "Circuito de Monza",
@@ -69,7 +69,7 @@
             { "temporada": 2022, "piloto": 1 },
             { "temporada": 2023, "piloto": 1 }
         ],
-        "imagen": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Monza_track_map.svg"
+        "imagen": "https://images.daznservices.com/di/library/DAZN_News/24/ca/monza-gp-italia-gran-premio-de-italia-formula-1-f1_9bag38iciu1f118g6l71uo0qg.jpg?t=314989067"
     },
     {
         "nombre": "Interlagos",
@@ -87,11 +87,11 @@
             { "temporada": 2022, "piloto": 1 },
             { "temporada": 2023, "piloto": 1 }
         ],
-        "imagen": "https://upload.wikimedia.org/wikipedia/commons/2/23/Aut%C3%B3dromo_Jos%C3%A9_Carlos_Pace_%28Interlagos%29.svg"
+        "imagen": "https://media.losandes.com.ar/p/272243866025e822aa60d7c468730a1e/adjuntos/368/imagenes/100/006/0100006330/1000x0/smart/interlagos-sao-paulo.jpg"
     },
     {
         "nombre": "Circuito de Yas Marina",
-        "pais": "Emiratos Árabes Unidos",
+        "pais": "Emiratos Arabes Unidos",
         "longitud_km": 5.28,
         "vueltas": 58,
         "descripcion": "Ubicado en Abu Dhabi, es famoso por ser el circuito donde se definen muchos campeonatos, con un diseño moderno y una espectacular carrera nocturna.",
@@ -105,7 +105,7 @@
             { "temporada": 2022, "piloto": 1 },
             { "temporada": 2023, "piloto": 3 }
         ],
-        "imagen": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Yas_Marina_Circuit_2021_layout.svg"
+        "imagen": "https://voyadubai.com/wp-content/uploads/2022/11/circuito-yas-marina-1.jpeg"
     },
     {
         "nombre": "Circuito de Suzuka",
@@ -123,6 +123,6 @@
             { "temporada": 2022, "piloto": 1 },
             { "temporada": 2023, "piloto": 1 }
         ],
-        "imagen": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Suzuka_circuit_map--2005.svg"
+        "imagen": "https://autoshowtv.com.mx/wp-content/uploads/2024/06/Circuito-de-Suzuka.jpg"
     }
 ]
