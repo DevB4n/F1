@@ -1,3 +1,4 @@
+
 @font-face {
     font-family: 'Formula1';
     src: url('../assets/fonts/f1/Formula\ 1.otf') format('truetype');
@@ -14,7 +15,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    font-family:  sans-serif;
+    font-family: sans-serif;
     color: white;
 }
 
@@ -34,6 +35,7 @@ body {
         0 0 20px #ff0000,
         0 0 40px #ff0040,
         0 0 80px #ff0040;
+    position: relative;
 }
 
 #volver {
@@ -66,7 +68,7 @@ body {
 }
 
 .card {
-    background-color: #fff;;
+    background-color: #fff;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -75,11 +77,12 @@ body {
     transition: transform 0.2s ease-in-out;
     opacity: 0.9;
     background: linear-gradient(to right, #911100, #000000);
-
+    position: relative;
+    cursor: pointer;
 }
 
 .card:hover {
-    transform: scale(1.08);
+    transform: scale(1.05);
     opacity: 1;
 }
 
@@ -113,4 +116,292 @@ body {
 .card ul strong {
     display: block;
     margin-bottom: 0.5rem;
+}
+
+/* Botón de detalles */
+.btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.btn-detalles {
+    background-color: #e10600;
+    color: white;
+    margin: 0 1rem 1rem;
+}
+
+.btn-detalles:hover {
+    background-color: #ff1a00;
+}
+
+/* Botones de administrador en la tarjeta */
+.card-admin-btns {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 5px;
+}
+
+.btn-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-size: 16px;
+    padding: 0;
+}
+
+.btn-icon:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-contenido {
+    background: linear-gradient(to right, #911100, #000000);
+    border-radius: 12px;
+    padding: 20px;
+    width: 80%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    color: white;
+}
+
+.cerrar {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 28px;
+    font-weight: bold;
+    color: black;
+    cursor: pointer;
+}
+
+.modal-img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+    background: #f9f9f9;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.info-detalle {
+    margin-top: 15px;
+}
+
+.info-detalle h2 {
+    margin-bottom: 15px;
+    color: white;
+    text-shadow: 0 0 5px #ff0000;
+}
+
+.info-detalle h3 {
+    margin: 15px 0 10px;
+}
+
+.info-detalle p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.info-detalle ul {
+    margin-left: 20px;
+}
+
+/* Botones de administrador en el detalle */
+.botones-admin {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-editar {
+    background-color: #1e88e5;
+    color: white;
+}
+
+.btn-editar:hover {
+    background-color: #1565c0;
+}
+
+.btn-eliminar {
+    background-color: #e53935;
+    color: white;
+}
+
+.btn-eliminar:hover {
+    background-color: #c62828;
+}
+
+/* Formulario */
+.form-contenido {
+    padding: 30px;
+}
+
+.form-grupo {
+    margin-bottom: 15px;
+}
+
+.form-grupo label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: white;
+}
+
+.form-grupo input,
+.form-grupo textarea,
+.form-grupo select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.form-grupo textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Estilos para los botones del formulario */
+.form-grupo.botones {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.btn-guardar {
+    background-color: #43a047;
+    color: white;
+}
+
+.btn-guardar:hover {
+    background-color: #2e7d32;
+}
+
+.btn-cancelar {
+    background-color: #757575;
+    color: white;
+}
+
+.btn-cancelar:hover {
+    background-color: #616161;
+}
+
+/* Agregar circuito botón */
+.admin-controls {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.btn-agregar {
+    background-color: #43a047;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-agregar:hover {
+    background-color: #2e7d32;
+}
+
+/* Estilos para el formulario de ganadores */
+.ganador-entrada {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.ganador-entrada input {
+    flex: 1;
+    min-width: 80px;
+}
+
+.btn-eliminar-ganador {
+    background-color: #e53935;
+    color: white;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 18px;
+    padding: 0;
+    line-height: 1;
+}
+
+.btn-agregar-ganador {
+    background-color: #43a047;
+    color: white;
+    margin-top: 5px;
+    font-size: 14px;
+    padding: 5px 10px;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
+    #header {
+        padding-right: 0;
+        justify-content: center;
+        position: relative;
+    }
+    
+    .admin-controls {
+        position: static;
+        margin-top: 10px;
+        transform: none;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .modal-contenido {
+        width: 95%;
+        padding: 15px;
+    }
+    
+    .form-grupo.botones {
+        flex-direction: column;
+    }
+    
+    .ganador-entrada {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .ganador-entrada input {
+        width: 100%;
+    }
 }
