@@ -16,7 +16,7 @@
     </div>
     <p>Cargando carrera...</p>
   </div>
-  
+
   <nav>
     <div id="f1-menu-image">
       <img src="assets/icons/f1-menu.png" alt="f1 image">
@@ -34,13 +34,55 @@
       <button id="log-in-btn">SIGN IN</button>
     </div>
   </nav>
-  
+
   <section id="banner">
     <video id="video-banner" width="max-width" controls>
       <source src='assets/videos/banner.mp4'>
     </video>
   </section>
-  
+
+  <!-- Sección de Noticias -->
+  <section class="noticias-container">
+    <h2 class="noticias-titulo">ÚLTIMAS NOTICIAS F1</h2>
+    
+    <!-- Carrusel de Noticias -->
+    <div class="carrusel">
+      <div class="carrusel-inner" id="carrusel-noticias">
+        <!-- Las tarjetas de noticias del carrusel se cargarán dinámicamente aquí -->
+      </div>
+      <button class="carrusel-control carrusel-prev">❮</button>
+      <button class="carrusel-control carrusel-next">❯</button>
+    </div>
+    
+    <!-- Indicadores de posición del carrusel -->
+    <div class="carrusel-indicadores" id="indicadores">
+      <!-- Los indicadores se generarán dinámicamente -->
+    </div>
+    
+    <!-- Noticias Estáticas -->
+    <div class="noticias-estaticas" id="noticias-estaticas">
+      <!-- Las noticias estáticas se cargarán dinámicamente aquí -->
+    </div>
+  </section>
+
+  <!-- Modal de Detalle de Noticia -->
+  <div class="modal-detalle" id="modal-noticia">
+    <div class="modal-contenido">
+      <div class="modal-header">
+        <h3 class="modal-titulo" id="modal-titulo"></h3>
+        <button class="modal-close" id="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-resumen" id="modal-resumen"></p>
+      </div>
+      <div class="modal-footer">
+        <span id="modal-fecha"></span>
+        <span id="modal-fuente"></span>
+        <a href="#" id="modal-url" class="modal-link" target="_blank">Leer más</a>
+      </div>
+    </div>
+  </div>
+
   <!-- Modal de Inicio de Sesión -->
   <section id="pop-up">
     <div id="header">
@@ -55,7 +97,7 @@
       <button id="login-button">Login</button>
     </div>
   </section>
-  
+
   <!-- Modal de Registro -->
   <section id="register-pop-up">
     <div id="header">
@@ -72,13 +114,13 @@
       <button id="register-button">Registrar</button>
     </div>
   </section>
-  
+
   <!-- Opcional: Panel de administrador, visible solo para admins -->
   <div id="admin-panel" style="display: none; margin: 20px; padding: 20px; background-color: #f8f8f8; border-radius: 5px;">
     <h3>Panel de Administrador</h3>
     <p>Bienvenido al panel de administración.</p>
   </div>
-  
+
   <script src='index.js' type="module" defer></script>
 </body>
 </html>
