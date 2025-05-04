@@ -142,3 +142,148 @@ button.cancelar {
 button.cancelar:hover {
     background-color: #777;
 }
+
+
+/* Modal styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    background: linear-gradient(145deg, #222, #111);
+    margin: 5% auto;
+    padding: 25px;
+    border: 1px solid #e50914;
+    width: 70%;
+    max-width: 600px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(229, 9, 20, 0.5);
+    color: #fff;
+    animation: modalFade 0.3s ease;
+    position: relative;
+}
+
+@keyframes modalFade {
+    from {opacity: 0; transform: translateY(-30px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close:hover {
+    color: #e50914;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #ddd;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 6px;
+    background-color: #333;
+    color: #fff;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    border-color: #e50914;
+    outline: none;
+    box-shadow: 0 0 5px rgba(229, 9, 20, 0.5);
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+button.guardar, button.cancelar {
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button.guardar {
+    background-color: #e50914;
+    color: #fff;
+    border: none;
+}
+
+button.guardar:hover {
+    background-color: #ff0f1a;
+    box-shadow: 0 0 10px rgba(229, 9, 20, 0.7);
+}
+
+button.cancelar {
+    background-color: transparent;
+    color: #ccc;
+    border: 1px solid #666;
+}
+
+button.cancelar:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+h2 {
+    margin-top: 0;
+    color: #e50914;
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Additional styling for new fields */
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.form-section {
+    margin-top: 25px;
+    border-top: 1px solid rgba(229, 9, 20, 0.3);
+    padding-top: 20px;
+}
+
+.form-section-title {
+    color: #ddd;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    font-weight: 500;
+}

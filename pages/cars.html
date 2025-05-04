@@ -1,49 +1,72 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Cars F1</title>
-<link rel="stylesheet" href="../css/cars.css">
-<script type="module" src="../components/cars/carsCards.js"></script>
-<script type="module" src="../components/cars/carsDetal.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Cars F1</title>
+    <link rel="stylesheet" href="../css/cars.css">
+    <script type="module" src="../components/cars/carsCards.js"></script>
+    <script type="module" src="../components/cars/carsDetal.js"></script>
+
 </head>
 <body>
-<header>
-    <h1>Cars F1</h1>
-</header>
-<div id="contenedor-coches"></div>
+    <header>
+        <h1>Cars F1</h1>
+    </header>
+    <div id="contenedor-coches"></div>
 
-<car-detail></car-detail>
-<div id="editor-modal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Editar Coche</h2>
-        <form id="editor-form">
-            <input type="hidden" id="coche-id">
-            <div class="form-group">
-                <label for="coche-equipo">Equipo:</label>
-                <input type="text" id="coche-equipo" required>
-            </div>
-            <div class="form-group">
-                <label for="coche-modelo">Modelo:</label>
-                <input type="text" id="coche-modelo" required>
-            </div>
-            <div class="form-group">
-                <label for="coche-motor">Motor:</label>
-                <input type="text" id="coche-motor" required>
-            </div>
-            <div class="form-group">
-                <label for="coche-imagen">URL de la imagen:</label>
-                <input type="url" id="coche-imagen" required>
-            </div>
-            <div class="form-buttons">
-                <button type="submit" class="guardar">Guardar Cambios</button>
-                <button type="button" class="cancelar">Cancelar</button>
-            </div>
-        </form>
+    <car-detail></car-detail>
+    <div id="editor-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Editar Coche</h2>
+            <form id="editor-form">
+                <input type="hidden" id="coche-id">
+                <div class="form-group">
+                    <label for="coche-equipo">Equipo:</label>
+                    <input type="text" id="coche-equipo" required>
+                </div>
+                <div class="form-group">
+                    <label for="coche-modelo">Modelo:</label>
+                    <input type="text" id="coche-modelo" required>
+                </div>
+                <div class="form-group">
+                    <label for="coche-motor">Motor:</label>
+                    <input type="text" id="coche-motor" required>
+                </div>
+                <div class="form-group">
+                    <label for="coche-imagen">URL de la imagen:</label>
+                    <input type="url" id="coche-imagen" required>
+                </div>
+                
+                <!-- Nuevos campos para características técnicas -->
+                <div class="form-section">
+                    <h3 class="form-section-title">Características Técnicas</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="coche-velocidad">Velocidad Máxima (km/h):</label>
+                            <input type="number" id="coche-velocidad" min="0" max="500">
+                        </div>
+                        <div class="form-group">
+                            <label for="coche-aceleracion">Aceleración 0-100 (segundos):</label>
+                            <input type="number" id="coche-aceleracion" step="0.1" min="0" max="10">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Campo para IDs de pilotos -->
+                <div class="form-section">
+                    <h3 class="form-section-title">Pilotos</h3>
+                    <div class="form-group">
+                        <label for="coche-pilotos">IDs de pilotos (separados por comas):</label>
+                        <input type="text" id="coche-pilotos" placeholder="Ej: pilot1, pilot2">
+                    </div>
+                </div>
+                
+                <div class="form-buttons">
+                    <button type="submit" class="guardar">Guardar Cambios</button>
+                    <button type="button" class="cancelar">Cancelar</button>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
-
-</body>
-</html>

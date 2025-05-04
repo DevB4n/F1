@@ -1,3 +1,5 @@
+const esAdmin = localStorage.getItem('admin') === 'true';
+
 class DriverDetail extends HTMLElement {
   constructor() {
     super();
@@ -18,18 +20,32 @@ class DriverDetail extends HTMLElement {
   }
 
   loadDriverData() {
-    fetch('../db/drivers/drivers.json')
-      .then(res => res.json())
-      .then(data => {
-        this.driversData = data;
-        this.render();
-      })
-      .catch(error => {
-        console.error('Error cargando datos de pilotos:', error);
-      });
+    // Primero intentamos cargar desde localStorage (para obtener datos actualizados)
+    const STORAGE_KEY = 'f1_drivers_data';
+    const cachedData = localStorage.getItem(STORAGE_KEY);
+    
+    if (cachedData) {
+      // Si tenemos datos en cache, los usamos
+      this.driversData = JSON.parse(cachedData);
+      this.render();
+    } else {
+      // Si no hay cache, cargamos del JSON original como respaldo
+      fetch('../db/drivers/drivers.json')
+        .then(res => res.json())
+        .then(data => {
+          this.driversData = data;
+          this.render();
+        })
+        .catch(error => {
+          console.error('Error cargando datos de pilotos:', error);
+        });
+    }
   }
 
   open() {
+    // Recargamos los datos cada vez que se abre el modal para tener la última versión
+    this.loadDriverData();
+    
     const modal = this.shadowRoot.querySelector(".modal");
     if (modal) {
       modal.style.display = "flex";

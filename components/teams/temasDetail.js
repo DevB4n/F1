@@ -4,6 +4,7 @@ class TeamDetail extends HTMLElement {
         this.attachShadow({ mode: "open" });
         this.pilots = [];
         this._isOpen = false;
+        this._currentTeamId = null;
     }
 
     connectedCallback() {
@@ -15,13 +16,28 @@ class TeamDetail extends HTMLElement {
                 this.close();
             }
         });
+        
+        // Escuchar eventos de actualización de equipos
+        document.addEventListener('team-updated', (e) => {
+            // Si el equipo actualizado es el que estamos mostrando, actualizamos la vista
+            if (this._isOpen && e.detail.id.toString() === this._currentTeamId) {
+                this.updateFromData(e.detail);
+            }
+        });
+        
+        // Escuchar el evento de eliminación de equipos para cerrar el modal si es necesario
+        document.addEventListener('eliminar-team', (e) => {
+            if (this._isOpen && e.detail.id.toString() === this._currentTeamId) {
+                this.close();
+            }
+        });
     }
 
     static get observedAttributes() {
-        return ['nombre', 'pais', 'imagen'];
+        return ['nombre', 'pais', 'imagen', 'motor', 'id'];
     }
 
-    attributeChangedCallback( oldValue, newValue) {
+    attributeChangedCallback(name, oldValue, newValue) {
         if (oldValue !== newValue) {
             this.render();
         }
@@ -29,6 +45,9 @@ class TeamDetail extends HTMLElement {
 
     async open() {
         this._isOpen = true;
+        // Guardar el ID del equipo actual
+        this._currentTeamId = this.getAttribute('id');
+        
         const modal = this.shadowRoot.querySelector('.modal-overlay');
         const modalContent = this.shadowRoot.querySelector('.modal-content');
         
@@ -54,12 +73,33 @@ class TeamDetail extends HTMLElement {
         setTimeout(() => {
             modal.style.display = 'none';
             this._isOpen = false;
+            this._currentTeamId = null;
         }, 300);
     }
 
     async fetchTeamDetails() {
         try {
-            // Obtener datos completos del equipo
+            // Si tenemos datos en teamsData, usamos esos en lugar de hacer una nueva petición
+            if (window.teamsData) {
+                const teamName = this.getAttribute('nombre');
+                const teamData = window.teamsData.find(team => team.nombre === teamName);
+                
+                if (teamData) {
+                    // Actualizar el atributo ID para seguimiento
+                    if (!this.hasAttribute('id') || this.getAttribute('id') !== teamData.id.toString()) {
+                        this.setAttribute('id', teamData.id.toString());
+                        this._currentTeamId = teamData.id.toString();
+                    }
+                    
+                    // Actualizar datos del motor
+                    this.shadowRoot.querySelector('.motor-value').textContent = teamData.motor || 'No disponible';
+                    
+                    await this.fetchPilotsData(teamData);
+                    return;
+                }
+            }
+            
+            // Fallback a petición AJAX si no hay datos en memoria
             const teamRes = await fetch("../db/teams/teams.json");
             const teams = await teamRes.json();
             
@@ -68,13 +108,35 @@ class TeamDetail extends HTMLElement {
             
             if (!teamData) return;
             
+            // Actualizar el atributo ID para seguimiento
+            if (!this.hasAttribute('id') || this.getAttribute('id') !== teamData.id.toString()) {
+                this.setAttribute('id', teamData.id.toString());
+                this._currentTeamId = teamData.id.toString();
+            }
+            
             // Guardar datos del motor
             this.shadowRoot.querySelector('.motor-value').textContent = teamData.motor || 'No disponible';
             
-            // Obtener datos de los pilotos
-            if (teamData.pilotos && teamData.pilotos.length) {
-                const pilotsRes = await fetch("../db/drivers/drivers.json");
-                const allPilots = await pilotsRes.json();
+            await this.fetchPilotsData(teamData);
+        } catch (error) {
+            console.error("Error obteniendo detalles del equipo:", error);
+        }
+    }
+    
+    async fetchPilotsData(teamData) {
+        // Obtener datos de los pilotos
+        if (teamData.pilotos && teamData.pilotos.length) {
+            try {
+                let allPilots;
+                
+                // Si hay datos de pilotos globales, usarlos
+                if (window.pilotsData) {
+                    allPilots = window.pilotsData;
+                } else {
+                    // Fallback a petición AJAX
+                    const pilotsRes = await fetch("../db/drivers/drivers.json");
+                    allPilots = await pilotsRes.json();
+                }
                 
                 // Filtrar solo los pilotos de este equipo
                 this.pilots = allPilots.filter(pilot => 
@@ -83,9 +145,40 @@ class TeamDetail extends HTMLElement {
                 
                 // Renderizar pilotos
                 this.renderPilots();
+            } catch (error) {
+                console.error("Error obteniendo datos de pilotos:", error);
             }
-        } catch (error) {
-            console.error("Error obteniendo detalles del equipo:", error);
+        } else {
+            // No hay pilotos
+            this.pilots = [];
+            this.renderPilots();
+        }
+    }
+    
+    // Método para actualizar directamente desde un objeto de datos
+    updateFromData(teamData) {
+        if (!teamData) return;
+        
+        // Actualizar atributos
+        this.setAttribute('nombre', teamData.nombre);
+        this.setAttribute('pais', teamData.pais);
+        this.setAttribute('imagen', teamData.imagen);
+        this.setAttribute('motor', teamData.motor);
+        
+        // Actualizar la interfaz directamente
+        this.shadowRoot.querySelector('.team-name').textContent = teamData.nombre;
+        this.shadowRoot.querySelector('.team-country').textContent = teamData.pais;
+        this.shadowRoot.querySelector('.team-logo').src = teamData.imagen;
+        this.shadowRoot.querySelector('.motor-value').textContent = teamData.motor || 'No disponible';
+        
+        // Actualizar pilotos
+        if (teamData.pilotos) {
+            // Creamos un objeto temporal para almacenar los datos del equipo
+            // para que fetchPilotsData pueda usarlo
+            const tempTeamData = {
+                pilotos: teamData.pilotos
+            };
+            this.fetchPilotsData(tempTeamData);
         }
     }
     
@@ -93,6 +186,10 @@ class TeamDetail extends HTMLElement {
         const pilotsContainer = this.shadowRoot.querySelector('.pilotos-container');
         pilotsContainer.innerHTML = '';
     
+        if (this.pilots.length === 0) {
+            pilotsContainer.innerHTML = '<p class="no-pilots">No hay pilotos asignados a este equipo</p>';
+            return;
+        }
         
         this.pilots.forEach(pilot => {
             const pilotCard = document.createElement('div');
@@ -114,9 +211,10 @@ class TeamDetail extends HTMLElement {
     }
 
     render() {
-        const nombre = this.getAttribute('nombre');
-        const pais = this.getAttribute('pais');
-        const imagen = this.getAttribute('imagen');
+        const nombre = this.getAttribute('nombre') || '';
+        const pais = this.getAttribute('pais') || '';
+        const imagen = this.getAttribute('imagen') || '';
+        const motor = this.getAttribute('motor') || 'Cargando...';
 
         this.shadowRoot.innerHTML = `
             <style>
@@ -383,7 +481,7 @@ class TeamDetail extends HTMLElement {
                     <div class="team-details">
                         <div class="detail-row">
                             <span class="detail-label">Motor:</span>
-                            <span class="motor-value">Cargando...</span>
+                            <span class="motor-value">${motor}</span>
                         </div>
                     </div>
                     
