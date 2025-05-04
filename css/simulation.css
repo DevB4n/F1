@@ -157,3 +157,32 @@ nav {
     background-color: #228DFF;
     text-shadow: 0 0 10px #fff, 0 0 20px #fff;
 }
+#sim-config {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.6);
+    padding: 30px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-family: 'Formula1';
+    color: white;
+    z-index: 2;
+}
+
+.selector {
+    display: flex;
+    flex-direction: column;
+}
+
+select {
+    font-size: 1em;
+    padding: 10px;
+    font-family: 'Formula1';
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+}

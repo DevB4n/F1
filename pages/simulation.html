@@ -16,20 +16,31 @@
         <h1 class="text shadow blink glow">SIMULADOR</h1>
     </div>
 
-    <!-- Menú desplegable -->
-    <nav>
-        <ul class="menu">
-            <li class="menu-item">
-                <a href="#" id="vehiculos" class="menu-link">Vehículos</a>
-            </li>
-            <li class="menu-item">
-                <a href="#" class="menu-link">Clasificaciones de Equipos</a>
-            </li>
-            <li class="menu-item">
-                <a href="#" class="menu-link">Simulación</a>
-            </li>
-        </ul>
-    </nav>
+
+    <section id="sim-config">
+        <div class="selector">
+            <label for="team-select">Selecciona un equipo:</label>
+            <select id="team-select"><option value="">-- Elegir equipo --</option></select>
+        </div>
+    
+        <div class="selector">
+            <label for="driver-select">Selecciona un conductor:</label>
+            <select id="driver-select"><option value="">-- Elegir conductor --</option></select>
+        </div>
+    
+        <div class="selector">
+            <label for="car-select">Selecciona un carro:</label>
+            <select id="car-select"><option value="">-- Elegir carro --</option></select>
+        </div>
+    
+        <div class="selector">
+            <label for="circuit-select">Selecciona un circuito:</label>
+            <select id="circuit-select"><option value="">-- Elegir circuito --</option></select>
+        </div>
+    
+        <button id="guardar-config">Guardar configuración</button>
+    </section>
+    
 </body>
 <script src="../components/simulation/simulation.js" defer type="module"></script>
 </html>
