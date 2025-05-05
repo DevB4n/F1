@@ -7,7 +7,7 @@ export const cargarCircuitos = async () => {
         return JSON.parse(circuitosLocalStorage);
     } else {
         // Si no hay datos en localStorage, cargamos del JSON
-        const respuesta = await fetch('../db/circuits/circuits.json');
+        const respuesta = await fetch('https://raw.githubusercontent.com/DevB4n/F1/main/db/circuits/circuits.json');
         const data = await respuesta.json();
         
         // Guardamos en localStorage 
