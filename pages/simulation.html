@@ -1,48 +1,68 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Simulador de Carrera F1</title>
-  <link rel="icon" href="../assets/icons/f1-favicon.png" type="image/x-icon" />
-  <link rel="stylesheet" href="../css/simulation.css" />
-  <script type="module" src="../components/simulation/simulation.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simulador de Carrera F1</title>
+    <link rel="icon" href="../assets/icons/f1-favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="../css/simulation.css" />
+    <script type="module" src="../components/custom-components.js"></script>
+    <script type="module" src="../components/simulation/simulation.js"></script>
     <script type="module" src="../components/simulation/historial.js"></script>
 </head>
 <body>
-  <main class="simulator-container">
-    <h1>Simulación de Carrera</h1>
+    <main class="simulator-container">
+        <h1>Simulación de Carrera</h1>
 
-    <section class="form-section">
-      <label for="select-team">Equipo</label>
-      <select id="select-team">
-        <option value="Red Bull Racing">Red Bull Racing</option>
-    </select>
+        <section class="form-section">
+            <div class="selection-group">
+                <div class="selection-controls">
+                    <label for="select-team">Equipo</label>
+                    <select id="select-team">
+                        <option disabled selected>Selecciona un equipo</option>
+                    </select>
+                </div>
+                <selection-card id="team-card" name="Sin selección" image="../assets/placeholder.png" type="Equipo"></selection-card>
+            </div>
 
-      <label for="select-driver">Piloto</label>
-      <select id="select-driver">
-        <option disabled selected>Selecciona un piloto</option>
-      </select>
+            <div class="selection-group">
+                <div class="selection-controls">
+                    <label for="select-driver">Piloto</label>
+                    <select id="select-driver">
+                        <option disabled selected>Selecciona un piloto</option>
+                    </select>
+                </div>
+                <selection-card id="driver-card" name="Sin selección" image="../assets/placeholder.png" type="Piloto"></selection-card>
+            </div>
 
-      <label for="select-car">Auto</label>
-      <select id="select-car">
-        <option disabled selected>Selecciona un auto</option>
-      </select>
+            <div class="selection-group">
+                <div class="selection-controls">
+                    <label for="select-car">Auto</label>
+                    <select id="select-car">
+                        <option disabled selected>Selecciona un auto</option>
+                    </select>
+                </div>
+                <selection-card id="car-card" name="Sin selección" image="../assets/placeholder.png" type="Auto"></selection-card>
+            </div>
 
-      <label for="select-circuit">Circuito</label>
-      <select id="select-circuit">
-        <option disabled selected>Selecciona un circuito</option>
-      </select>
+            <div class="selection-group">
+                <div class="selection-controls">
+                    <label for="select-circuit">Circuito</label>
+                    <select id="select-circuit">
+                        <option disabled selected>Selecciona un circuito</option>
+                    </select>
+                </div>
+                <selection-card id="circuit-card" name="Sin selección" image="../assets/placeholder.png" type="Circuito"></selection-card>
+            </div>
 
-      <button id="simulate-btn">Simular Carrera</button>
-    </section>
+            <button id="simulate-btn">Simular Carrera</button>
+        </section>
 
-    <section id="result" class="result-section"></section>
-    <div id="weather-info" style="margin-top: 1em; font-weight: bold;"></div>
+        <section id="result" class="result-section"></section>
+        <div id="weather-info" style="margin-top: 1em; font-weight: bold;"></div>
 
-    <button id="borrar-historial">🗑️ Borrar historial</button>
-<div id="historial-carreras"></div>
-
-  </main>
+        <button id="borrar-historial">🗑️ Borrar historial</button>
+        <div id="historial-carreras"></div>
+    </main>
 </body>
 </html>

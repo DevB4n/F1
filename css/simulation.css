@@ -1,62 +1,341 @@
-/* Estilos para el historial de carreras */
-#historial-carreras {
-    margin-top: 2rem;
-    width: 100%;
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --f1-red: #e10600;
+  --f1-dark: #111111;
+  --f1-light: #f5f5f5;
+  --f1-accent: #00ffff;
+  --f1-yellow: #ffcc00;
+  --f1-gradient: linear-gradient(90deg, var(--f1-red), #ff5a54);
+}
+
+body {
+  font-family: 'Titillium Web', sans-serif;
+  background-color: var(--f1-dark);
+  color: var(--f1-light);
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 2rem;
+  background-image: 
+    radial-gradient(circle at 5% 95%, rgba(255, 0, 0, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 95% 5%, rgba(0, 255, 255, 0.1) 0%, transparent 20%),
+    linear-gradient(to bottom, rgba(17, 17, 17, 1), rgba(0, 0, 0, 1));
+}
+
+.simulator-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: rgba(20, 20, 20, 0.9);
+  border-radius: 10px;
+  padding: 2.5rem;
+  box-shadow: 0 0 30px rgba(225, 6, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.simulator-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: var(--f1-gradient);
+}
+
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--f1-light);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: var(--f1-gradient);
+  border-radius: 2px;
+}
+
+.selection-group {
+  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.selection-controls {
+  display: flex;
+  flex-direction: column;
+}
+
+selection-card {
+  height: 100%;
+  display: block;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+/* Form styles */
+.form-section {
+  margin-bottom: 2.5rem;
+  display: grid;
+  grid-gap: 1.5rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--f1-light);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+select {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--f1-light);
+  font-family: inherit;
+  font-size: 1rem;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 12px) center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+select:focus {
+  outline: none;
+  border-color: var(--f1-red);
+  box-shadow: 0 0 0 3px rgba(225, 6, 0, 0.3);
+}
+
+select:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+#simulate-btn {
+  grid-column: 1 / -1;
+  padding: 1rem 0;
+  background: var(--f1-gradient);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 8px rgba(225, 6, 0, 0.3);
+  transition: all 0.2s ease;
+  margin-top: 1rem;
+}
+
+#simulate-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(225, 6, 0, 0.4);
+  background: linear-gradient(90deg, #ff1a00, #ff7a74);
+}
+
+#simulate-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(225, 6, 0, 0.3);
+}
+
+/* Results section */
+.result-section {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.result-section:empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.result-section:empty::after {
+  content: 'Simula una carrera para ver resultados';
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+}
+
+.result-section h2 {
+  color: var(--f1-red);
+  margin-bottom: 1rem;
+  font-weight: 700;
+  position: relative;
+}
+
+.result-section p {
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 0;
+}
+
+#weather-info {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 0.8rem 1.2rem;
+  border-radius: 5px;
+  border-left: 4px solid var(--f1-accent);
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  text-shadow: 0 0 10px var(--f1-accent), 0 0 20px var(--f1-accent);
+  color: var(--f1-accent);
+  display: inline-block;
+}
+
+#borrar-historial {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--f1-light);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+#borrar-historial:hover {
+  background-color: rgba(225, 6, 0, 0.3);
+  border-color: var(--f1-red);
+}
+
+.historial-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  background-color: rgba(20, 20, 20, 0.9);
+}
+
+.historial-tabla thead {
+  background: var(--f1-gradient);
+}
+
+.historial-tabla th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.historial-tabla td {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.95rem;
+}
+
+.historial-tabla tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.borrar-carrera {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.2rem;
+  transition: all 0.2s ease;
+}
+
+.borrar-carrera:hover {
+  color: var(--f1-red);
+  transform: scale(1.2);
+}
+
+.no-historial {
+  text-align: center;
+  padding: 2rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+}
+
+/* Animations */
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(225, 6, 0, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(225, 6, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(225, 6, 0, 0); }
+}
+
+@keyframes glow {
+  0% { text-shadow: 0 0 5px var(--f1-accent); }
+  50% { text-shadow: 0 0 20px var(--f1-accent), 0 0 30px var(--f1-accent); }
+  100% { text-shadow: 0 0 5px var(--f1-accent); }
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+  
+  .simulator-container {
+    padding: 1.5rem;
+  }
+  
+  .selection-group {
+    grid-template-columns: 1fr;
   }
   
   .historial-tabla {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1rem;
-    font-size: 0.9rem;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
   }
-  
-  .historial-tabla th,
-  .historial-tabla td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .historial-tabla thead {
-    background-color: #f2f2f2;
-    font-weight: bold;
-  }
-  
-  .historial-tabla tr:hover {
-    background-color: #f5f5f5;
-  }
-  
-  .borrar-carrera {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #ff3333;
-    font-size: 1.2rem;
-  }
-  
-  .borrar-carrera:hover {
-    color: #cc0000;
-  }
-  
-  #borrar-historial {
-    margin-top: 1rem;
-    background-color: #f44336;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  #borrar-historial:hover {
-    background-color: #d32f2f;
-  }
-  
-  .no-historial {
-    padding: 1rem;
-    text-align: center;
-    color: #666;
-    font-style: italic;
-  }
+}
+
+/* Additional F1 styling touches */
+select option {
+  background-color: var(--f1-dark);
+  color: var(--f1-light);
+}
+
+/* Style for simulation result values to highlight them */
+.result-section p span {
+  font-weight: 700;
+  color: var(--f1-yellow);
+}
