@@ -428,7 +428,7 @@ export const crearTarjetas = async () => {
     const circuitos = await cargarCircuitos();
     const pilotos = await cargarConductores();
     const contenedorTarjetas = document.getElementById('circuitos');
-    
+    console.log(circuitos);console.log(await cargarCircuitos())
     // Limpiar el contenedor
     contenedorTarjetas.innerHTML = '';
     
