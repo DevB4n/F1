@@ -33,6 +33,14 @@ async function loadData() {
       fetch('../../db/cars/cars.json').then(r => r.json()),
       fetch('../../db/circuits/circuits.json').then(r => r.json())
     ]);
+    
+    // Asegurarnos de que cada carro tenga un ID único
+    cars.forEach((car, index) => {
+      if (!car.id) {
+        car.id = index;
+      }
+    });
+    
     data = { teams, drivers, cars, circuits };
     loadTeams();
     loadCircuits();
@@ -87,9 +95,9 @@ $team.addEventListener('change', () => {
 
   const teamCars = data.cars.filter(car => car.equipo === teamName);
   $car.innerHTML = `<option disabled selected>Selecciona un auto</option>`;
-  teamCars.forEach((car, index) => {
+  teamCars.forEach(car => {
     const option = document.createElement('option');
-    option.value = index;
+    option.value = car.id;  // Usar el ID único del carro en lugar del índice
     option.textContent = car.modelo;
     $car.appendChild(option);
   });
@@ -132,8 +140,8 @@ $driver.addEventListener('change', () => {
 
 // Actualizar card del auto cuando se selecciona
 $car.addEventListener('change', () => {
-  const carIndex = parseInt($car.value);
-  const car = data.cars[carIndex];
+  const carId = parseInt($car.value);
+  const car = data.cars.find(c => c.id === carId);  // Buscar el carro por ID en lugar de índice
   if (car && document.getElementById('car-card')) {
     document.getElementById('car-card').setAttribute('name', car.modelo);
     document.getElementById('car-card').setAttribute('image', car.imagen || '../assets/cars/default-car.png');
@@ -142,11 +150,11 @@ $car.addEventListener('change', () => {
 
 $simulateBtn.addEventListener('click', () => {
   const driverId = parseInt($driver.value);
-  const carIndex = parseInt($car.value);
+  const carId = parseInt($car.value);
   const circuitName = $circuit.value;
 
   const driver = data.drivers.find(d => d.id === driverId);
-  const car = data.cars[carIndex];
+  const car = data.cars.find(c => c.id === carId);  // Buscar el carro por ID en lugar de índice
   const circuit = data.circuits.find(c => c.nombre === circuitName);
 
   if (!driver || !car || !circuit || !climaActual) {
