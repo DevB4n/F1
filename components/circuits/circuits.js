@@ -1,3 +1,4 @@
-import {crearTarjetas} from "../circuits/tarjetas.js";
+import {cargarCircuitos,crearTarjetas} from "../circuits/tarjetas.js";
 crearTarjetas()
 
+console.log(cargarCircuitos())
