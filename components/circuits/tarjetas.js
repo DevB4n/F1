@@ -7,7 +7,7 @@ export const cargarCircuitos = async () => {
         return JSON.parse(circuitosLocalStorage);
     } else {
         // Si no hay datos en localStorage, cargamos del JSON
-        const respuesta = await fetch('../../db/circuits/circuits.json');
+        const respuesta = await fetch('https://github.com/DevB4n/F1/blob/main/db/circuits/circuits.json');
         const data = await respuesta.json();
         
         // Guardamos en localStorage 
@@ -523,6 +523,7 @@ export const crearTarjetas = async () => {
         card.addEventListener('click', () => mostrarDetalles(circuito, pilotos));
         
         contenedorTarjetas.appendChild(card);
+        
     });
 };
 

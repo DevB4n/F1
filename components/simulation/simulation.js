@@ -1,9 +1,3 @@
-const vehiculosMenu = document.getElementById('vehiculos')
-
-vehiculosMenu.addEventListener('click',()=>{
-    console.log('menu de vehiculos activados')
-})
-
 
 const cargarCarros = async () =>{
     const respuesta = await fetch('../../db/cars/cars.json');
@@ -67,8 +61,8 @@ conductores.forEach(driver => {
 
 carros.forEach(car => {
     const option = document.createElement('option')
-    option.value = car.nombre || car.name
-    option.textContent = car.nombre || car.name
+    option.value = car.modelo || car.name
+    option.textContent = car.modelo || car.name
     carSelect.appendChild(option)
 })
 

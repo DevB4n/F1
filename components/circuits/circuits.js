@@ -1,2 +1,3 @@
-import {  crearTarjetas} from "../circuits/tarjetas.js";
+import {crearTarjetas} from "../circuits/tarjetas.js";
 crearTarjetas()
+
