@@ -299,6 +299,7 @@ button {
     transform: scale(0.95);
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
     z-index: 20;
+    margin-top:-40%;
   }
 
 #register-information{
@@ -356,6 +357,7 @@ body.blur-active::before {
   transform: scale(0.95);
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
   z-index: 20;
+  margin-top:-40%;
 }
 
 
