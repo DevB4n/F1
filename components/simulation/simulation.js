@@ -1,100 +1,143 @@
+const $team = document.getElementById('select-team');
+const $driver = document.getElementById('select-driver');
+const $car = document.getElementById('select-car');
+const $circuit = document.getElementById('select-circuit');
+const $result = document.getElementById('result');
+const $simulateBtn = document.getElementById('simulate-btn');
+const $weather = document.getElementById('weather-info'); // NUEVO: contenedor para mostrar el clima
 
-const cargarCarros = async () =>{
-    const respuesta = await fetch('../../db/cars/cars.json');
-    const data = await respuesta.json()
-    return data
+let data = {
+  teams: [],
+  drivers: [],
+  cars: [],
+  circuits: []
+};
+
+let climaActual = null; // Aquí se guarda el clima actual aleatorio
+
+const climasPosibles = [
+  { nombre: 'Soleado', factor: 1.0 },
+  { nombre: 'Nublado', factor: 0.95 },
+  { nombre: 'Lluvia ligera', factor: 0.9 },
+  { nombre: 'Lluvia fuerte', factor: 0.8 },
+  { nombre: 'Tormenta', factor: 0.7 },
+  { nombre: 'Nieve', factor: 0.6 },
+  { nombre: 'Calor extremo', factor: 0.85 },
+];
+
+async function loadData() {
+  const [teams, drivers, cars, circuits] = await Promise.all([
+    fetch('../../db/teams/teams.json').then(r => r.json()),
+    fetch('../../db/drivers/drivers.json').then(r => r.json()),
+    fetch('../../db/cars/cars.json').then(r => r.json()),
+    fetch('../../db/circuits/circuits.json').then(r => r.json())
+  ]);
+  data = { teams, drivers, cars, circuits };
+  loadTeams();
+  loadCircuits();
 }
-const cars = localStorage.setItem('carros', JSON.stringify( await cargarCarros()))
-console.log(JSON.parse(localStorage.getItem('carros')))
 
-const cargarTeams = async () =>{
-    const respuesta = await fetch('../../db/teams/teams.json');
-    const data = await respuesta.json()
-    return data
+function loadTeams() {
+  $team.innerHTML = `<option disabled selected>Selecciona un equipo</option>`;
+  data.teams.forEach(team => {
+    const option = document.createElement('option');
+    option.value = team.nombre;
+    option.textContent = team.nombre;
+    $team.appendChild(option);
+  });
 }
-const teams = localStorage.setItem('teams', JSON.stringify( await cargarTeams()))
-console.log(JSON.parse(localStorage.getItem('teams')))
 
-const cargarDrivers = async () =>{
-    const respuesta = await fetch('../../db/drivers/drivers.json');
-    const data = await respuesta.json()
-    return data
+function loadCircuits() {
+  $circuit.innerHTML = `<option disabled selected>Selecciona un circuito</option>`;
+  data.circuits.forEach(circuit => {
+    const option = document.createElement('option');
+    option.value = circuit.nombre;
+    option.textContent = circuit.nombre;
+    $circuit.appendChild(option);
+  });
 }
-const drivers = localStorage.setItem('drivers', JSON.stringify( await cargarDrivers()))
-console.log(JSON.parse(localStorage.getItem('drivers')))
 
-const cargarCircuits = async () =>{
-    const respuesta = await fetch('../../db/circuits/circuits.json');
-    const data = await respuesta.json()
-    return data
+// Al cambiar de equipo, mostrar pilotos y autos del equipo
+$team.addEventListener('change', () => {
+  const teamName = $team.value;
+
+  const drivers = data.drivers.filter(driver => driver.equipo === teamName);
+  $driver.innerHTML = `<option disabled selected>Selecciona un piloto</option>`;
+  drivers.forEach(driver => {
+    const option = document.createElement('option');
+    option.value = driver.id;
+    option.textContent = driver.nombre;
+    $driver.appendChild(option);
+  });
+
+  const teamCars = data.cars.filter(car => car.equipo === teamName);
+  $car.innerHTML = `<option disabled selected>Selecciona un auto</option>`;
+  teamCars.forEach((car, index) => {
+    const option = document.createElement('option');
+    option.value = index;
+    option.textContent = car.modelo;
+    $car.appendChild(option);
+  });
+});
+
+// NUEVO: Al seleccionar un circuito, generar clima aleatorio
+$circuit.addEventListener('change', () => {
+  climaActual = climasPosibles[Math.floor(Math.random() * climasPosibles.length)];
+  $weather.textContent = `🌤️ Clima actual en el circuito: ${climaActual.nombre}`;
+});
+
+$simulateBtn.addEventListener('click', () => {
+  const driverId = parseInt($driver.value);
+  const carIndex = parseInt($car.value);
+  const circuitName = $circuit.value;
+
+  const driver = data.drivers.find(d => d.id === driverId);
+  const car = data.cars[carIndex];
+  const circuit = data.circuits.find(c => c.nombre === circuitName);
+
+  if (!driver || !car || !circuit || !climaActual) {
+    $result.textContent = 'Faltan datos para simular.';
+    return;
+  }
+
+  const result = simulateRace(driver, car, circuit, climaActual.factor);
+  $result.innerHTML = `
+    <h2>Resultado de la simulación</h2>
+    <p>Clima: ${climaActual.nombre}</p>
+    <p>Tiempo total: ${result.time.toFixed(2)} segundos</p>
+    <p>Velocidad media: ${result.speed.toFixed(2)} km/h</p>
+  `;
+  
+  // Crear y lanzar un evento personalizado para notificar que se ha completado una simulación
+  const simulationResult = {
+    driver: driver,
+    car: car,
+    circuit: circuit,
+    clima: climaActual,
+    resultado: result
+  };
+  
+  // Crear y disparar un evento personalizado con los datos de la simulación
+  const eventoSimulacion = new CustomEvent('simulacionCompletada', {
+    detail: simulationResult
+  });
+  document.dispatchEvent(eventoSimulacion);
+});
+
+function simulateRace(driver, car, circuit, climaFactor) {
+  const tipoConduccion = "conduccion_normal";
+  const rendimiento = car.rendimiento[tipoConduccion];
+  const velocidadBase = rendimiento.velocidad_promedio_kmh;
+  const velocidadReal = velocidadBase * climaFactor;
+
+  const distancia = circuit.longitud_km * circuit.vueltas;
+  const tiempoHoras = distancia / velocidadReal;
+  const tiempoSegundos = tiempoHoras * 3600;
+
+  return {
+    time: tiempoSegundos,
+    speed: velocidadReal
+  };
 }
-const circuits = localStorage.setItem('circuits', JSON.stringify( await cargarCircuits()));
-console.log(JSON.parse(localStorage.getItem('circuits')))
 
-
-const teamSelect = document.getElementById('team-select')
-const driverSelect = document.getElementById('driver-select')
-const carSelect = document.getElementById('car-select')
-const circuitSelect = document.getElementById('circuit-select')
-const guardarBtn = document.getElementById('guardar-config')
-
-// Cargar datos desde localStorage
-const equipos = JSON.parse(localStorage.getItem('teams'))
-const conductores = JSON.parse(localStorage.getItem('drivers'))
-const carros = JSON.parse(localStorage.getItem('carros'))
-const circuitos = JSON.parse(localStorage.getItem('circuits'))
-
-// Rellenar selects
-equipos.forEach(team => {
-    const option = document.createElement('option')
-    option.value = team.nombre || team.name
-    option.textContent = team.nombre || team.name
-    teamSelect.appendChild(option)
-})
-
-conductores.forEach(driver => {
-    const option = document.createElement('option')
-    option.value = driver.nombre || driver.name
-    option.textContent = driver.nombre || driver.name
-    driverSelect.appendChild(option)
-})
-
-carros.forEach(car => {
-    const option = document.createElement('option')
-    option.value = car.modelo || car.name
-    option.textContent = car.modelo || car.name
-    carSelect.appendChild(option)
-})
-
-circuitos.forEach(circuit => {
-    const option = document.createElement('option')
-    option.value = circuit.nombre || circuit.name
-    option.textContent = circuit.nombre || circuit.name
-    circuitSelect.appendChild(option)
-})
-
-// Guardar configuración
-guardarBtn.addEventListener('click', () => {
-    const config = {
-        team: teamSelect.value,
-        driver: driverSelect.value,
-        car: carSelect.value,
-        circuit: circuitSelect.value
-    }
-
-    if (!config.team || !config.driver || !config.car || !config.circuit) {
-        alert('Por favor completa todos los campos antes de guardar.')
-        return
-    }
-
-    const nombreConfig = prompt('¿Deseas guardar esta configuración? Ingresa un nombre o presiona cancelar para usarla temporalmente:')
-    if (nombreConfig) {
-        const guardadas = JSON.parse(localStorage.getItem('configs')) || {}
-        guardadas[nombreConfig] = config
-        localStorage.setItem('configs', JSON.stringify(guardadas))
-        alert('Configuración guardada exitosamente.')
-    } else {
-        localStorage.setItem('temp-config', JSON.stringify(config))
-        alert('Configuración lista para simulación.')
-    }
-})
+loadData();

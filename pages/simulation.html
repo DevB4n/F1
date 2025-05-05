@@ -1,46 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIMULADOR</title>
-    <link rel="icon" href="../assets/icons/f1-favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="../css/simulation.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulador de Carrera F1</title>
+  <link rel="icon" href="../assets/icons/f1-favicon.png" type="image/x-icon" />
+  <link rel="stylesheet" href="../css/simulation.css" />
+  <script type="module" src="../components/simulation/simulation.js"></script>
+    <script type="module" src="../components/simulation/historial.js"></script>
 </head>
 <body>
-    <img id="background" src="../assets/imgs/simulation/simulation-background.png" alt="background">
+  <main class="simulator-container">
+    <h1>Simulación de Carrera</h1>
 
-    <div id="titulo">
-        <button onclick="location.href='../index.html'"  id="volver">volver</button>
-        <h1 class="text shadow blink glow">SIMULADOR</h1>
-    </div>
+    <section class="form-section">
+      <label for="select-team">Equipo</label>
+      <select id="select-team">
+        <option value="Red Bull Racing">Red Bull Racing</option>
+    </select>
 
+      <label for="select-driver">Piloto</label>
+      <select id="select-driver">
+        <option disabled selected>Selecciona un piloto</option>
+      </select>
 
-    <section id="sim-config">
-        <div class="selector">
-            <label for="team-select">Selecciona un equipo:</label>
-            <select id="team-select"><option value="">-- Elegir equipo --</option></select>
-        </div>
-    
-        <div class="selector">
-            <label for="driver-select">Selecciona un conductor:</label>
-            <select id="driver-select"><option value="">-- Elegir conductor --</option></select>
-        </div>
-    
-        <div class="selector">
-            <label for="car-select">Selecciona un carro:</label>
-            <select id="car-select"><option value="">-- Elegir carro --</option></select>
-        </div>
-    
-        <div class="selector">
-            <label for="circuit-select">Selecciona un circuito:</label>
-            <select id="circuit-select"><option value="">-- Elegir circuito --</option></select>
-        </div>
-    
-        <button id="guardar-config">Guardar configuración</button>
+      <label for="select-car">Auto</label>
+      <select id="select-car">
+        <option disabled selected>Selecciona un auto</option>
+      </select>
+
+      <label for="select-circuit">Circuito</label>
+      <select id="select-circuit">
+        <option disabled selected>Selecciona un circuito</option>
+      </select>
+
+      <button id="simulate-btn">Simular Carrera</button>
     </section>
-    
+
+    <section id="result" class="result-section"></section>
+    <div id="weather-info" style="margin-top: 1em; font-weight: bold;"></div>
+
+    <button id="borrar-historial">🗑️ Borrar historial</button>
+<div id="historial-carreras"></div>
+
+  </main>
 </body>
-<script src="../components/simulation/simulation.js" defer type="module"></script>
 </html>
