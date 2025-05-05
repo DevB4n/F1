@@ -7,7 +7,7 @@ export const cargarCircuitos = async () => {
         return JSON.parse(circuitosLocalStorage);
     } else {
         // Si no hay datos en localStorage, cargamos del JSON
-        const respuesta = await fetch('./db/circuits/circuits.json');
+        const respuesta = await fetch('../db/circuits/circuits.json');
         const data = await respuesta.json();
         
         // Guardamos en localStorage 
@@ -17,7 +17,7 @@ export const cargarCircuitos = async () => {
 }
 
 export const cargarConductores = async () => {
-    const respuesta = await fetch('../../db/drivers/drivers.json');
+    const respuesta = await fetch('../db/drivers/drivers.json');
     const data = await respuesta.json();
     return data;
 }
